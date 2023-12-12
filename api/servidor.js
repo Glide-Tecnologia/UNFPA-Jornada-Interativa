@@ -87,8 +87,21 @@ function startServer () {
   })
 
   // Rota para ver a a quantidade total
-  app.get('/quantidade', (req, res) => {
-    const sql = 'SELECT COUNT(*) AS quantidade FROM `jogador`'
+  app.get('/ranking', (req, res) => {
+    const sql = "SELECT tema, COUNT(*) as quantidade, ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json GROUP BY tema ORDER BY quantidade DESC LIMIT 5"
+
+    // SELECT
+    //     tema,
+    //     COUNT(*) as quantidade,
+    //     ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem
+    // FROM
+    //     jogador,
+    //     JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json
+    // GROUP BY
+    //     tema
+    // ORDER BY 
+    //   quantidade DESC
+    // LIMIT 5;
 
     db.query(sql, (err, result) => {
       if (err) {
@@ -124,11 +137,11 @@ function startServer () {
   })
 
   // Rota para atualizar um cadastro
-  app.put('/cadastros/:id', (req, res) => {
+  app.put('/comentario/:id', (req, res) => {
     const { id } = req.params // Supondo que o unidade do cadastro seja passado
-    const { click } = req.body // Recebe os valores do corpo da requisição
-    const sql = 'UPDATE jogador SET click = ? WHERE id = ?'
-    const values = [click, id]
+    const { comentario } = req.body // Recebe os valores do corpo da requisição
+    const sql = 'UPDATE jogador SET outroTema = ? WHERE id = ?'
+    const values = [comentario, id]
 
     db.query(sql, values, (err, result) => {
       if (err) {

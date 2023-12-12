@@ -23,15 +23,18 @@ function Cadastro () {
 
   const salvar = async () => {
     console.log('Tentando Salvar')
-    if (inputs.email && isEmailValid(inputs.email)) {
+    const id = parseInt(localStorage.getItem('idJogador'))
+    localStorage.setItem('comentario', inputs.comentario)
+    if (inputs.comentario || true) {
       try {
-        const response = await axios.post('http://localhost:3001/cadastros', {
-          email: inputs.email
-        })
-        localStorage.setItem('idJogador', response.data.id)
-        localStorage.setItem('email', inputs.email)
+        const response = await axios.put(
+          `http://localhost:3001/comentario/${id}`,
+          {
+            comentario: inputs.comentario
+          }
+        )
         console.log('Salvou')
-        navigate('/menu')
+        navigate('/nome')
       } catch (error) {
         navigate('/erro')
       }
@@ -45,15 +48,15 @@ function Cadastro () {
     default: [
       '1 2 3 4 5 6 7 8 9 0 {bksp}',
       'q w e r t y u i o p',
-      'a s d f g h j k l ç',
-      'z x c v b n m . - _',
-      '@ {space} .com @gmail.com'
+      'a s d f g h j k l ç .',
+      '{shift} z x c v b n m ,',
+      '{space}'
     ],
     shift: [
       '1 2 3 4 5 6 7 8 9 0 {bksp}',
-      'q w e r t y u i o p',
-      'a s d f g h j k l ç',
-      '{shift} z x c v b n m , .',
+      'Q W E R T Y U I O P',
+      'A S D F G H J K L Ç _',
+      '{shift} Z X C V B N M -',
       '{space}'
     ],
     display: {
@@ -61,15 +64,8 @@ function Cadastro () {
     }
   }
 
-  const isEmailValid = email => {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    return emailPattern.test(email)
-  }
-
   const onChangeAll = inputs => {
     setInputs({ ...inputs })
-    // keyboard.current.setInput(inputs.telefone, 'telefone')
-    // console.log('Inputs changed', inputs.telefone)
   }
 
   const handleShift = () => {
@@ -94,21 +90,13 @@ function Cadastro () {
     return inputs[inputName] || ''
   }
 
-  const [touchCount, setTouchCount] = useState(0)
-
-  useEffect(() => {
-    if (touchCount === 5) {
-      navigate('/logs')
-      setTouchCount(0) // Reinicia a contagem após 5 toques
-    }
-  }, [touchCount])
-
   return (
     <div className='cadastro'>
+      <img src='img/icpd-30.png' className='icpd-30 absolute' />
 
-      <img src="img/icpd-30.png" className='icpd-30 absolute' />
-
-      <div className='mensagem-comentario absolute'>Algum outro que não foi mencionado?</div>
+      <div className='mensagem-comentario absolute'>
+        Algum outro que não foi mencionado?
+      </div>
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
       <img src='img/elemento-44.png' className='elemento-5 absolute' />
@@ -118,15 +106,11 @@ function Cadastro () {
           id='inputComentario'
           autoComplete='off'
           type='text'
-          value={getInputValue('email')}
-          onFocus={() => setInputName('email')}
+          value={getInputValue('comentario')}
+          onFocus={() => setInputName('comentario')}
           placeholder={''}
           onChange={onChangeInput}
-          className={
-            (!inputs.email || !isEmailValid(inputs.email)) && erro
-              ? 'input--error'
-              : ''
-          }
+          className={!inputs.comentario && erro ? 'input--error' : ''}
         />
       </div>
       <div className='keyboard'>
@@ -140,9 +124,8 @@ function Cadastro () {
         />
       </div>
       <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
-        <img src="img/seta.svg"></img>
+        <img src='img/seta.svg'></img>
       </div>
-
     </div>
   )
 }
