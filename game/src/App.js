@@ -24,6 +24,7 @@ import Email from './pages/Telas/Email'
 import Mensagem from './pages/Telas/Mensagem'
 import Conclusao from './pages/Telas/Conclusao'
 import './App.css'
+import './pages/animate.min.css'
 
 function App () {
   return (
