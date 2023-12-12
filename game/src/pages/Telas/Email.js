@@ -134,43 +134,23 @@ function Cadastro () {
   }, [touchCount])
 
   return (
-    <div className='cadastro'>
-      <Configuration />
-      {/* <DataVaultComponent /> */}
-      <div className='btn-logs' onTouchStart={handleTouch}></div>
-      <div className='cadastro__titulo'>
-        Olá,
-        <br></br>
-        <br></br>
-        Somos a B3, a bolsa do Brasil!
-      </div>
-      <div className='cadastro__texto'>
-        Temos um ecossistema de empresas parceiras para entregar a melhor
-        solução para você.
-        <br></br>
-        <br></br>
-        Confira nossas soluções que trazem mais segurança, integração e
-        inteligência de dados para potencializar suas estratégias de negócio.
-      </div>
-      <div className='cadastro__termos'>
-        Estes dados serão utilizados para lhe enviar informativos sobre os
-        nossos serviços, além de utilizarmos para efeitos estatísticos. Ao
-        utilizar este formulário você concorda com a nossa Política. Podemos
-        compartilhar estes dados com outras marcas do mesmo Grupo para a mesma
-        finalidade. Caso deseje se desinscrever, você pode fazê-lo a partir de
-        algum e-mail já recebido (através da função descadastrar) assim
-        exercendo os seus direitos de usuário para retificação ou remoção dos
-        dados sensíveis.
-      </div>
+    <div className='email'>
+
+      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+
+      <div className='titulo-email absolute'>Estamos quase acabando!</div>
+
+      <img src='img/elemento-6.png' className='elemento-6 absolute' />
+      <div className='label-input-email absolute'>Email:</div>
       <div className='inputs'>
         <input
           ref={inputRef}
-          id='email'
+          id='inputEmail'
           autoComplete='off'
           type='text'
           value={getInputValue('email')}
           onFocus={() => setInputName('email')}
-          placeholder={'Qual é seu email?'}
+          placeholder={''}
           onChange={onChangeInput}
           className={
             (!inputs.email || !isEmailValid(inputs.email)) && erro
@@ -179,7 +159,7 @@ function Cadastro () {
           }
         />
       </div>
-      <div className='keyboard'>
+      <div className='keyboard keyboard-email'>
         <Keyboard
           keyboardRef={r => (keyboard.current = r)}
           inputName={inputName}
@@ -189,9 +169,33 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar' onTouchStart={() => salvar()}>
-        ACEITO
+
+      <div id="terms" class="absolute">
+          <div id="termsCheck">
+              <label class="container-checkbox">
+                  <span class="text-terms">Aceito compartilhar informações com o UNFPA e receber comunicados via email</span>
+                  <input id="inputCheckbox" type="checkbox" />
+                  <span class="checkmark"></span>
+              </label>
+          </div>
+          
+      </div>    
+      <div id="terms2" class="absolute">
+          <div id="termsCheck">
+              <label class="container-checkbox">
+                  <span class="text-terms">Estou ciente que meus dados não serão comercializados ou compartilhados</span>
+                  <input id="inputCheckbox" type="checkbox" />
+                  <span class="checkmark"></span>
+              </label>
+          </div>
+          
+      </div>    
+
+
+      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+        <img src="img/seta.svg"></img>
       </div>
+
     </div>
   )
 }
