@@ -87,8 +87,21 @@ function startServer () {
   })
 
   // Rota para ver a a quantidade total
-  app.get('/quantidade', (req, res) => {
-    const sql = 'SELECT COUNT(*) AS quantidade FROM `jogador`'
+  app.get('/ranking', (req, res) => {
+    const sql = "SELECT tema, COUNT(*) as quantidade, ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json GROUP BY tema ORDER BY quantidade DESC LIMIT 5"
+
+    // SELECT
+    //     tema,
+    //     COUNT(*) as quantidade,
+    //     ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem
+    // FROM
+    //     jogador,
+    //     JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json
+    // GROUP BY
+    //     tema
+    // ORDER BY 
+    //   quantidade DESC
+    // LIMIT 5;
 
     db.query(sql, (err, result) => {
       if (err) {
