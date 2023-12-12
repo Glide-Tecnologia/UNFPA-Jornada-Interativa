@@ -11,29 +11,22 @@ function Vida () {
 
   return (
     <div>
-      <img src='img/elemento-3.png' className='elemento-3 absolute' />
-      <img src='img/elemento-5.png' className='elemento-5 absolute' />
+      <img src='img/elemento-6.png' className='elemento-3 absolute' />
+      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+
+
+      <div className='titulo-mensagem absolute'>Estamos próximos de celebrar os 30 anos da CIPD,</div>
+      <div className='subtitulo-mensagem absolute'>um marco para a saúde e os direitos reprodutivos.</div>
+
+      <div className='mensagem absolute'>A sua colaboração é muito importante para que os direitos das juventudes sejam considerados para esse futuro!</div>
+
       <img
         src='img/seta.svg'
         className='seta absolute'
         onTouchStart={() => redireconar()}
         onClick={() => redireconar()}
       />
-      <img src='img/Coração.png' className='icone-pilares icone-coracao absolute' />
-      <div className='titulo-pilares-itens absolute'>
-        <h2>MINHA VIDA</h2>
-      </div>
-      <div className='texto-pilares-itens texto-vida absolute'>
-        <p>
-          Que a juventude possa ter uma vida saudável e com acesso à educação em
-          sexualidade, com igualdade de gênero e com o pleno empoderamento de
-          mulheres e meninas.{' '}
-        </p>
-        <p>
-          Para isso, também é fundamental que os homens estejam envolvidos e
-          engajados nesse tema!
-        </p>
-      </div>
+      
     </div>
   )
 }
