@@ -19,6 +19,8 @@ import Temas from './pages/Telas/Temas'
 import Ranking from './pages/Telas/Ranking'
 import Comentario from './pages/Telas/Comentario'
 import Nome from './pages/Telas/Nome'
+import Dados from './pages/Telas/Dados'
+import Email from './pages/Telas/Email'
 import './App.css'
 
 function App () {
@@ -44,6 +46,8 @@ function App () {
         <Route path='/ranking' element={<Ranking />}></Route>
         <Route path='/comentario' element={<Comentario />}></Route>
         <Route path='/nome' element={<Nome />}></Route>
+        <Route path='/dados' element={<Dados />}></Route>
+        <Route path='/email' element={<Email />}></Route>
       </Routes>
     </BrowserRouter>
   )
