@@ -40,15 +40,15 @@ function Conhece () {
       </div>
       <div
         className='btn-nao absolute hidden'
-        onTouchStart={() => redireconar('Sim')}
-        onClick={() => redireconar('Sim')}
+        onTouchStart={() => redireconar('Não')}
+        onClick={() => redireconar('Não')}
       >
         Não, quero conhecer!
       </div>
       <div
         className='btn-sim absolute hidden'
-        onTouchStart={() => redireconar('Não')}
-        onClick={() => redireconar('Não')}
+        onTouchStart={() => redireconar('Sim')}
+        onClick={() => redireconar('Sim')}
       >
         Sim, mas quero saber mais!
       </div>

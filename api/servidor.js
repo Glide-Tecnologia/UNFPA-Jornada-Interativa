@@ -137,11 +137,11 @@ function startServer () {
   })
 
   // Rota para atualizar um cadastro
-  app.put('/cadastros/:id', (req, res) => {
+  app.put('/comentario/:id', (req, res) => {
     const { id } = req.params // Supondo que o unidade do cadastro seja passado
-    const { click } = req.body // Recebe os valores do corpo da requisição
-    const sql = 'UPDATE jogador SET click = ? WHERE id = ?'
-    const values = [click, id]
+    const { comentario } = req.body // Recebe os valores do corpo da requisição
+    const sql = 'UPDATE jogador SET outroTema = ? WHERE id = ?'
+    const values = [comentario, id]
 
     db.query(sql, values, (err, result) => {
       if (err) {
