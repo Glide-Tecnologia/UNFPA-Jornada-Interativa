@@ -6,7 +6,7 @@ function Estrategia () {
   const navigate = useNavigate()
 
   const redireconar = () => {
-    navigate('/pilares')
+    navigate('/corpo')
   }
 
   return (

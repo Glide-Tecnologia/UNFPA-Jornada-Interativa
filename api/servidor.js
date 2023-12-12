@@ -10,7 +10,7 @@ const dbConfig = {
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'b3_fenauto'
+  database: 'unfpa'
 }
 
 let db
@@ -103,10 +103,14 @@ function startServer () {
 
   // Rota para criar um novo cadastro
   app.post('/cadastros', (req, res) => {
-    const { email } = req.body
+    const { conhece, eixo, temas } = req.body
 
-    const insertSql = 'INSERT INTO jogador (email) VALUES (?)'
-    const values = [email]
+    const insertSql =
+      'INSERT INTO jogador (conhece, eixo, temas) VALUES (?,?,?)'
+      console.log(conhece)
+      console.log(eixo)
+      console.log(temas)
+    const values = [conhece, eixo, temas]
 
     db.query(insertSql, values, (err, result) => {
       if (err) {
@@ -115,7 +119,7 @@ function startServer () {
         return
       }
 
-      res.json({ id: result.insertId, email })
+      res.json({ id: result.insertId })
     })
   })
 
@@ -123,8 +127,7 @@ function startServer () {
   app.put('/cadastros/:id', (req, res) => {
     const { id } = req.params // Supondo que o unidade do cadastro seja passado
     const { click } = req.body // Recebe os valores do corpo da requisição
-    const sql =
-      'UPDATE jogador SET click = ? WHERE id = ?'
+    const sql = 'UPDATE jogador SET click = ? WHERE id = ?'
     const values = [click, id]
 
     db.query(sql, values, (err, result) => {

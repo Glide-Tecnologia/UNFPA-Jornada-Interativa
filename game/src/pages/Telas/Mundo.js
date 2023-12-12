@@ -6,7 +6,7 @@ function Mundo () {
   const navigate = useNavigate()
 
   const redireconar = () => {
-    navigate('/eixos')
+    navigate('/pergunta')
   }
 
   return (

@@ -1,0 +1,4 @@
+.btn-temas.active {
+  background-color: var(--purple);
+  color: var(--orange);
+}

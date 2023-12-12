@@ -5,8 +5,9 @@ import './Telas.css'
 function Eixos () {
   const navigate = useNavigate()
 
-  const redireconar = () => {
-    navigate('/pilares')
+  const redireconar = condicao => {
+    localStorage.setItem('eixo', condicao)
+    navigate('/estrategia')
   }
 
   return (

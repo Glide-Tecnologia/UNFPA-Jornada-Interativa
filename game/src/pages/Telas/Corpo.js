@@ -6,7 +6,7 @@ function Corpo () {
   const navigate = useNavigate()
 
   const redireconar = () => {
-    navigate('/eixos')
+    navigate('/vida')
   }
 
   return (
