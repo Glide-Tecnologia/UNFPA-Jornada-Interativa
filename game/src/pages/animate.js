@@ -44,9 +44,9 @@ export function animateElement(element, effect, delay, options = {}) {
             if (targetElement.constructor === NodeList) {
                 let index = 0; 
                 targetElement.forEach(subElement => {
-                    const subelementClassList = Array.from(subElement.classList);
+                    const subElementClassList = Array.from(subElement.classList);
                     
-                    subelementClassList.forEach(className => {
+                    subElementClassList.forEach(className => {
                         if (className.startsWith("animate__")) {
                             subElement.classList.remove(className);
                         }
@@ -56,12 +56,12 @@ export function animateElement(element, effect, delay, options = {}) {
                         subElement.style.animationDuration = duration + "ms";
                         subElement.classList.add("animate__animated", "animate__"+effect);
                         subElement.classList.remove("hidden");
-                    }, delay + index*delayItems + duration);
+                    }, index*delayItems);
 
                     if (removeAfter == true) {
                         setTimeout(() => {
                             subElement.classList.remove("animate__animated", "animate__"+effect);
-                        }, delay + delayItems*index + duration + 50);
+                        }, delayItems*index + 50);
                     }
 
                     index++;
@@ -81,7 +81,7 @@ export function animateElement(element, effect, delay, options = {}) {
                 if (removeAfter == true) {
                     setTimeout(() => {
                         targetElement.classList.remove("animate__animated", "animate__"+effect);
-                    }, delay + duration + 50);
+                    }, 50);
                 }
             }
         } else {

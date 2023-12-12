@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Telas.css'
+import { animateElement } from '../animate'
 
 function Corpo () {
   const navigate = useNavigate()
@@ -9,21 +10,29 @@ function Corpo () {
     navigate('/vida')
   }
 
+  useEffect(() => {
+    let delay = 100;
+    animateElement(".icone-pilares", "jackInTheBox", delay)
+    animateElement(".titulo-pilares-itens", "fadeInDown", delay+300)
+    animateElement(".texto-pilares-itens", "fadeIn", delay+500)
+    animateElement(".seta", "bounceIn", delay+1000)
+  }, [])
+
   return (
     <div>
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
       <img src='img/elemento-5.png' className='elemento-5 absolute' />
       <img
         src='img/seta.svg'
-        className='seta absolute'
+        className='seta absolute hidden'
         onTouchStart={() => redireconar()}
         onClick={() => redireconar()}
       />
-      <img src='img/Mão.png' className='icone-pilares icone-mao absolute' />
-      <div className='titulo-pilares-itens absolute'>
+      <img src='img/Mão.png' className='icone-pilares icone-mao absolute hidden' />
+      <div className='titulo-pilares-itens absolute hidden'>
         <h2>MEU CORPO</h2>
       </div>
-      <div className='texto-pilares-itens texto-corpo absolute'>
+      <div className='texto-pilares-itens texto-corpo absolute hidden'>
         <p>
           Que a juventude possa fazer escolhas livres e informadas, tenha acesso
           a serviços e informações sobre direitos e saúde sexual e reprodutiva.
