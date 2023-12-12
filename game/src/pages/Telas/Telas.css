@@ -1,0 +1,472 @@
+.icpd-30 {
+  left: 386px;
+  top: 94px;
+  width: 307.975px;
+  height: 307.975px;
+}
+
+.elemento-3 {
+  bottom: 0;
+  left: 0;
+}
+
+.elemento-4 {
+  top: 0;
+  right: 0;
+}
+
+.elemento-5 {
+  top: 0;
+  right: 0;
+}
+
+.elemento-6 {
+  bottom: 0;
+  left: 0;
+}
+
+.texto-conhece {
+  top: 482px;
+  left: 146px;
+  width: 790px;
+}
+
+.texto-cipd {
+  top: 1016px;
+  left: 157px;
+  width: 770px;
+}
+
+.texto-pilares-itens {
+  top: 967px;
+  left: 278px;
+  width: 522px;
+  text-align: center;
+}
+
+.texto-saude {
+  top: 877px;
+  left: 214px;
+  width: 650px;
+}
+
+.texto-espaco {
+  top: 877px;
+  left: 182px;
+  width: 714px;
+}
+
+.texto-governo {
+  left: 157px;
+  width: 770px;
+}
+
+.texto-sustentabilidade {
+  top: 877px;
+  left: 186px;
+  width: 706px;
+}
+
+.texto-corpo {
+  top: 887px;
+  left: 176px;
+  width: 726px;
+}
+
+.texto-vida {
+  top: 887px;
+  left: 172px;
+  width: 734px;
+}
+
+.texto-vida p:nth-child(2) {
+  margin-top: 51px;
+}
+
+.texto-mundo {
+  top: 887px;
+  left: 176px;
+  width: 726px;
+  letter-spacing: 1.4px;
+}
+
+.texto-conhece p:nth-child(2) {
+  margin-top: 51px;
+}
+
+.texto-pergunta {
+  top: 706px;
+  left: 277px;
+  width: 526px;
+  text-align: center;
+}
+
+.texto-temas {
+  top: 109px;
+  left: 128px;
+  width: 824px;
+  text-align: center;
+  letter-spacing: -1.02px;
+}
+
+.texto-temas p {
+  font-size: 34px;
+}
+
+.texto-ranking {
+  top: 381px;
+  left: 388px;
+  width: 304px;
+  text-align: center;
+  letter-spacing: -1.02px;
+}
+
+.texto-ranking p {
+  font-size: 34px;
+}
+
+.titulo-conhece {
+  width: 767px;
+  text-align: center;
+  top: 1096px;
+  left: 157px;
+}
+
+.titulo-cipd {
+  width: 800px;
+  top: 510px;
+  left: 157px;
+}
+
+.titulo-pilares {
+  width: 800px;
+  top: 839px;
+  left: 121px;
+}
+
+.titulo-pilares h2 {
+  text-align: center;
+  color: var(--purple);
+}
+
+.titulo-eixos {
+  width: 767px;
+  top: 569px;
+  left: 157px;
+  text-align: center;
+}
+
+.titulo-estrategia {
+  width: 812px;
+  top: 540px;
+  left: 134px;
+  text-align: center;
+}
+
+.titulo-pergunta {
+  width: 610px;
+  top: 936px;
+  left: 235px;
+  text-align: center;
+}
+
+.titulo-ranking {
+  width: 305px;
+  top: 271px;
+  left: 387px;
+  text-align: center;
+}
+
+.titulo-pergunta h2 {
+  color: var(--purple);
+}
+
+.titulo-comentario{
+  width: 462px;
+  top: 573px;
+  left: 308px;
+  text-align: center;
+}
+
+.titulo-comentario h2 {
+  color: var(--purple);
+}
+
+.subtitulo-cipd {
+  width: 800px;
+  top: 630px;
+  left: 157px;
+}
+
+.subtitulo-pilares {
+  width: 800px;
+  top: 927px;
+  left: 121px;
+}
+
+.subtitulo-estrategia {
+  width: 706px;
+  top: 1136px;
+  left: 187px;
+  text-align: center;
+}
+
+.titulo-pilares-itens {
+  width: 758px;
+  top: 754px;
+  left: 166px;
+}
+
+.titulo-pilares-itens h2 {
+  text-align: center;
+}
+
+.subtitulo-cipd h2 {
+  color: var(--purple);
+}
+
+.subtitulo-pilares h2 {
+  text-align: center;
+}
+
+.ranking {
+  top: 555px;
+  left: 127px;
+}
+
+.ranking__item {
+  width: 825px;
+  height: 116px;
+  border-radius: 231px;
+  border: 4px solid #F8991D;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.ranking__nome {
+  color: #532D53;
+  font-family: UNFPABold;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-grow: 1;
+}
+
+.ranking__porcentagem {
+  color: #532D53;
+  text-align: right;
+  font-family: UNFPABold;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.8px;
+  padding-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  flex-grow: 1;
+}
+
+.temas {
+  left: 156px;
+  top: 184px;
+}
+
+.btn-temas {
+  width: 773.37px;
+  height: 73px;
+  margin-top: 30px;
+  border-radius: 231px;
+  background-color: var(--orange);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: UNFPABold;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.9px;
+}
+
+.btn-nao,
+.btn-sim,
+.btn-dignidade,
+.btn-saude,
+.btn-espaco,
+.btn-governo,
+.btn-sustentabilidade {
+  width: 772.63px;
+  height: 73px;
+  top: 1233px;
+  left: 153px;
+  border-radius: 231px;
+  background-color: var(--orange);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: UNFPABold;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.9px;
+}
+
+.btn-sim {
+  top: 1336px;
+  left: 153px;
+  background: #FFDDB1;
+  font-family: UNFPA;
+}
+
+.btn-dignidade,
+.btn-saude,
+.btn-espaco,
+.btn-governo,
+.btn-sustentabilidade {
+  top: 820px;
+  left: 153px;
+}
+
+.btn-saude {
+  top: 927px;
+}
+
+.btn-espaco {
+  top: 1034px;
+}
+
+.btn-governo {
+  top: 1141px;
+}
+
+.btn-sustentabilidade {
+  top: 1248px;
+}
+
+.seta {
+  top: 1504px;
+  left: 470px;
+  width: 141px;
+  height: 141px;
+}
+
+.seta-temas {
+  top: 1701px;
+  left: 783px;
+}
+
+.seta-cadastro {
+  top: 1624px;
+}
+
+.dignidade {
+  top: 1082px;
+  left: 265px;
+  width: 80px;
+  height: 80px;
+}
+
+.saude {
+  top: 1082px;
+  left: 382px;
+  width: 80px;
+  height: 80px;
+}
+
+.espaco {
+  top: 1082px;
+  left: 499px;
+  width: 80px;
+  height: 80px;
+}
+
+.governos {
+  top: 1082px;
+  left: 616px;
+  width: 80px;
+  height: 80px;
+}
+
+.sustentabilidade {
+  top: 1082px;
+  left: 733px;
+  width: 80px;
+  height: 80px;
+}
+
+.icone-pilares {
+  top: 338px;
+  left: 405px;
+  width: 308px;
+  height: 308px;
+}
+
+.icone-mao {
+  left: 417px;
+  width: 244.378px;
+  height: 271.87px;
+}
+
+.icone-coracao {
+  left: 424px;
+  width: 349px;
+  height: 254.136px;
+}
+
+.icone-mundo {
+  left: 422px;
+  width: 273.444px;
+  height: 274.997px;
+}
+
+.mao {
+  top: 869px;
+  left: 198px;
+  width: 160px;
+  height: 178px;
+}
+
+.coracao {
+  top: 875px;
+  left: 432px;
+  width: 227.965px;
+  height: 166px;
+}
+
+.mundo {
+  top: 870px;
+  left: 706px;
+  width: 175px;
+  height: 176px;
+}
+
+.btn-como {
+  z-index: 1;
+  width: 825px;
+  height: 116px;
+  left: 127px;
+  top: 1495px;
+  border-radius: 231px;
+  background-color: var(--orange);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: UNFPABold;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.5px;
+}

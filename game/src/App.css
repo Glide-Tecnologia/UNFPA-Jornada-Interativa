@@ -1,0 +1,88 @@
+:root {
+  --orange: #FAA634;
+  --black: #231F20;
+  --darkorange: #F8991D;
+  --lilac: #8B3F8C;
+  --white: #FFFFFF;
+  --blue: #0590C7;
+  --purple: #532D53;
+  --lightpurple: #8B3F8C26;
+  --no-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow: hidden;
+  width: 1080px;
+  height: 100%;
+}
+
+@font-face {
+  font-family: 'UNFPALight';
+  src: url(/public/fonts/UNFPA-Light.ttf);
+}
+
+@font-face {
+  font-family: 'UNFPA';
+  src: url(/public/fonts/UNFPA-Text.ttf);
+}
+
+@font-face {
+  font-family: 'UNFPASemibold';
+  src: url(/public/fonts/UNFPA-Semibold.ttf);
+}
+
+@font-face {
+  font-family: 'UNFPABold';
+  src: url(/public/fonts/UNFPA-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'UNFPATextSC';
+  src: url(/public/fonts/UNFPA-TextSC.ttf);
+}
+
+/* ============================== */
+/* ============GERAL============= */
+/* ============================== */
+
+.absolute {
+  position: absolute;
+}
+
+h1 {
+  color: var(--lilac);
+  font-family: UNFPABold;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100px;
+}
+
+h2 {
+  color: var(--lilac);
+  font-family: UNFPABold;
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px;
+}
+
+p {
+  color: var(--purple);
+  font-family: UNFPA;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+}

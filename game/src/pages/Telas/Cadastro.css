@@ -1,0 +1,110 @@
+.keyboard {
+  position: absolute;
+  z-index: 2;
+  width: 80%;
+  left: 10%;
+  top: 1170px;
+}
+
+.hg-theme-default {
+  background-color: red;
+  color: black;
+}
+
+.hg-theme-default .hg-button {
+  background-color: black;
+  border: solid 2px black;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.hg-button[data-skbtn="@gmail.com"] {
+  max-width: 180px;
+}
+
+input {
+  position: absolute;
+  z-index: 2;
+  width: 70%;
+  padding: 0 5% 10px 5%;
+  left: 10%;
+  top: 1000px;
+  height: 90px;
+  border-radius: 100px;
+  border: 0;
+  text-align: left;
+  font-size: 48px;
+  font-family: 'GalanoGrotesqueMedium';
+}
+
+input::placeholder {
+  color: var(--gray);
+}
+
+.input--error {
+  box-shadow: 0 0 50px 5px red;
+}
+
+.cadastro__titulo {
+  position: absolute;
+  z-index: 2;
+  font-family: 'GalanoGrotesqueBold';
+  width: 80%;
+  left: 10%;
+  top: 160px;
+  color: black;
+  font-size: 55px;
+  line-height: 65px;
+}
+
+.cadastro__texto {
+  position: absolute;
+  z-index: 2;
+  width: 80%;
+  left: 10%;
+  top: 440px;
+  color: black;
+  font-size: 42px;
+  line-height: 60px;
+
+}
+
+.cadastro__termos {
+  position: absolute;
+  z-index: 2;
+  width: 80%;
+  left: 10%;
+  top: 1490px;
+  color: black;
+  font-size: 23px;
+  line-height: 32px;
+}
+
+.btn-salvar {
+  position: absolute;
+  z-index: 10;
+  width: 400px;
+  height: 90px;
+  padding-bottom: 10px;
+  background-color: black;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  left: 340px;
+  bottom: 69px;
+  font-family: 'GalanoGrotesqueBold';
+  color: var(--blue);
+}
+
+.btn-logs{
+  position: absolute;
+  /* background-color: red; */
+  width: 200px;
+  height: 200px;
+  right: 0;
+  top: 0;
+  z-index: 99999;
+}
