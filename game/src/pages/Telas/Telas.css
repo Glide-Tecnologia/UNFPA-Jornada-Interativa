@@ -763,3 +763,47 @@
   font-weight: 500;
   line-height: 60px; /* 171.429% */
 }
+/* ----------------- Logo Final */
+.logo-final{
+  top: 126px;
+  left: 229px;
+  width: 620px;
+}
+.titulo-final{
+  top: 646px;
+  left: 197px;
+  width: 686px;
+  color: var(--purple);
+  text-align: center;
+  font-family:  'UNFPABold';
+  font-size: 65px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px; /* 123.077% */
+}
+.instagram{
+  top:874px;
+  left: 240px;
+  color: var(--lilac);
+  font-family:'UNFPABold';
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100px; /* 125% */
+}
+.redes-sociais{
+  top: 1058px;
+  left: 263px;
+
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+.redes-sociais img{
+  width: 106px;
+}
+.slogan-final{
+  left: 376px;
+  bottom: 327px;
+  width: 336.96px;
+}
