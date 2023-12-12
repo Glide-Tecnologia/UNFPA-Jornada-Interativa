@@ -5,9 +5,8 @@ import './Telas.css'
 function Pergunta () {
   const navigate = useNavigate()
 
-  const redireconar = condicao => {
-    localStorage.setItem('conhece', condicao)
-    navigate('/cipd')
+  const redireconar = () => {
+    navigate('/temas')
   }
 
   return (

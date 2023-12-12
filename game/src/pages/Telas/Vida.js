@@ -6,7 +6,7 @@ function Vida () {
   const navigate = useNavigate()
 
   const redireconar = () => {
-    navigate('/eixos')
+    navigate('/mundo')
   }
 
   return (
