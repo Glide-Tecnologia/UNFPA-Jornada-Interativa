@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
-import DataVaultComponent from '../../components/DataVault'
-import Configuration from '../../components/Configuration/Configuration'
+import './Cadastro.css'
 
 function Cadastro () {
   const [inputs, setInputs] = useState({})
@@ -13,8 +12,6 @@ function Cadastro () {
   const [inputName, setInputName] = useState('default')
   const keyboard = useRef()
   const [erro, setErro] = useState(false)
-  const [isChecked, setIsChecked] = useState(false)
-  const [fieldsChecked, setFieldsChecked] = useState(false)
 
   const navigate = useNavigate()
 
@@ -65,37 +62,14 @@ function Cadastro () {
   }
 
   const isEmailValid = email => {
-    // Expressão regular para validar um e-mail
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-
     return emailPattern.test(email)
-  }
-
-  useEffect(() => {
-    const time = setTimeout(() => {
-      setFieldsChecked(false)
-    }, 1000)
-    return () => clearTimeout(time)
-  }, [fieldsChecked])
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
-
-  function openPopup () {
-    const popup = document.getElementById('popup')
-    popup.classList.add('show')
-  }
-
-  function closePopup () {
-    const popup = document.getElementById('popup')
-    popup.classList.remove('show')
   }
 
   const onChangeAll = inputs => {
     setInputs({ ...inputs })
-    keyboard.current.setInput(inputs.telefone, 'telefone')
-    console.log('Inputs changed', inputs.telefone)
+    // keyboard.current.setInput(inputs.telefone, 'telefone')
+    // console.log('Inputs changed', inputs.telefone)
   }
 
   const handleShift = () => {
@@ -121,10 +95,6 @@ function Cadastro () {
   }
 
   const [touchCount, setTouchCount] = useState(0)
-  
-  const handleTouch = () => {
-    setTouchCount(prevCount => prevCount + 1)
-  }
 
   useEffect(() => {
     if (touchCount === 5) {
@@ -134,43 +104,23 @@ function Cadastro () {
   }, [touchCount])
 
   return (
-    <div className='cadastro'>
-      <Configuration />
-      {/* <DataVaultComponent /> */}
-      <div className='btn-logs' onTouchStart={handleTouch}></div>
-      <div className='cadastro__titulo'>
-        Olá,
-        <br></br>
-        <br></br>
-        Somos a B3, a bolsa do Brasil!
-      </div>
-      <div className='cadastro__texto'>
-        Temos um ecossistema de empresas parceiras para entregar a melhor
-        solução para você.
-        <br></br>
-        <br></br>
-        Confira nossas soluções que trazem mais segurança, integração e
-        inteligência de dados para potencializar suas estratégias de negócio.
-      </div>
-      <div className='cadastro__termos'>
-        Estes dados serão utilizados para lhe enviar informativos sobre os
-        nossos serviços, além de utilizarmos para efeitos estatísticos. Ao
-        utilizar este formulário você concorda com a nossa Política. Podemos
-        compartilhar estes dados com outras marcas do mesmo Grupo para a mesma
-        finalidade. Caso deseje se desinscrever, você pode fazê-lo a partir de
-        algum e-mail já recebido (através da função descadastrar) assim
-        exercendo os seus direitos de usuário para retificação ou remoção dos
-        dados sensíveis.
-      </div>
+    <div className='nome'>
+
+      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+
+      <div className='titulo-nome absolute'>Estamos quase acabando!</div>
+
+      <img src='img/elemento-6.png' className='elemento-6 absolute' />
+      <div className='label-input absolute'>Nome completo:</div>
       <div className='inputs'>
         <input
           ref={inputRef}
-          id='email'
+          id='inputNome'
           autoComplete='off'
           type='text'
           value={getInputValue('email')}
           onFocus={() => setInputName('email')}
-          placeholder={'Qual é seu email?'}
+          placeholder={''}
           onChange={onChangeInput}
           className={
             (!inputs.email || !isEmailValid(inputs.email)) && erro
@@ -189,9 +139,10 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar' onTouchStart={() => salvar()}>
-        ACEITO
+      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+        <img src="img/seta.svg"></img>
       </div>
+
     </div>
   )
 }
