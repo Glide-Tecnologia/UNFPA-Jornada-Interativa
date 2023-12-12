@@ -21,6 +21,8 @@ import Comentario from './pages/Telas/Comentario'
 import Nome from './pages/Telas/Nome'
 import Dados from './pages/Telas/Dados'
 import Email from './pages/Telas/Email'
+import Mensagem from './pages/Telas/Mensagem'
+import Conclusao from './pages/Telas/Conclusao'
 import './App.css'
 
 function App () {
@@ -48,6 +50,8 @@ function App () {
         <Route path='/nome' element={<Nome />}></Route>
         <Route path='/dados' element={<Dados />}></Route>
         <Route path='/email' element={<Email />}></Route>
+        <Route path='/mensagem' element={<Mensagem />}></Route>
+        <Route path='/conclusao' element={<Conclusao />}></Route>
       </Routes>
     </BrowserRouter>
   )
