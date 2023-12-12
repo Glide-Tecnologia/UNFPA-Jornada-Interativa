@@ -113,6 +113,19 @@
   font-size: 34px;
 }
 
+.texto-rodape {
+  width: 444px;
+  height: 90px;
+  top: 1727px;
+  left: 154px; 
+  color: #532D53;
+  font-family: UNFPA;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
 .texto-ranking {
   top: 381px;
   left: 388px;
