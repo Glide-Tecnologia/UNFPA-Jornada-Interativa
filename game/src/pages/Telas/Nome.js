@@ -23,15 +23,15 @@ function Cadastro () {
 
   const salvar = async () => {
     console.log('Tentando Salvar')
-    if (inputs.email && isEmailValid(inputs.email)) {
+    const id = parseInt(localStorage.getItem('idJogador'))
+    if (inputs.nome) {
       try {
-        const response = await axios.post('http://localhost:3001/cadastros', {
-          email: inputs.email
+        const response = await axios.put(`http://localhost:3001/nome/${id}`, {
+          nome: inputs.nome
         })
-        localStorage.setItem('idJogador', response.data.id)
-        localStorage.setItem('email', inputs.email)
+        localStorage.setItem('nome', inputs.nome)
         console.log('Salvou')
-        navigate('/menu')
+        navigate('/dados')
       } catch (error) {
         navigate('/erro')
       }
@@ -46,14 +46,14 @@ function Cadastro () {
       '1 2 3 4 5 6 7 8 9 0 {bksp}',
       'q w e r t y u i o p',
       'a s d f g h j k l ç',
-      'z x c v b n m . - _',
-      '@ {space} .com @gmail.com'
+      '{shift} z x c v b n m',
+      '{space}'
     ],
     shift: [
       '1 2 3 4 5 6 7 8 9 0 {bksp}',
-      'q w e r t y u i o p',
-      'a s d f g h j k l ç',
-      '{shift} z x c v b n m , .',
+      'Q W E R T Y U I O P',
+      'A S D F G H J K L Ç',
+      '{shift} Z X C V B N M',
       '{space}'
     ],
     display: {
@@ -61,15 +61,26 @@ function Cadastro () {
     }
   }
 
-  const isEmailValid = email => {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-    return emailPattern.test(email)
-  }
-
   const onChangeAll = inputs => {
     setInputs({ ...inputs })
-    // keyboard.current.setInput(inputs.telefone, 'telefone')
-    // console.log('Inputs changed', inputs.telefone)
+    keyboard.current.setInput(capitalizarExcetoPreposicoes(inputs.nome), 'nome')
+    // console.log('Inputs changed', capitalizarExcetoPreposicoes(inputs.nome))
+  }
+
+  function capitalizarExcetoPreposicoes (nome) {
+    nome = nome.toLowerCase()
+    const palavras = nome.split(' ')
+    const preposicoes = ['de', 'da', 'das', 'dos', 'do']
+
+    const resultado = palavras.map(palavra => {
+      if (!preposicoes.includes(palavra.toLowerCase())) {
+        return palavra.charAt(0).toUpperCase() + palavra.slice(1)
+      } else {
+        return palavra
+      }
+    })
+
+    return resultado.join(' ')
   }
 
   const handleShift = () => {
@@ -105,8 +116,7 @@ function Cadastro () {
 
   return (
     <div className='nome'>
-
-      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute' />
 
       <div className='titulo-nome absolute'>Estamos quase acabando!</div>
 
@@ -118,15 +128,11 @@ function Cadastro () {
           id='inputNome'
           autoComplete='off'
           type='text'
-          value={getInputValue('email')}
-          onFocus={() => setInputName('email')}
+          value={getInputValue('nome')}
+          onFocus={() => setInputName('nome')}
           placeholder={''}
           onChange={onChangeInput}
-          className={
-            (!inputs.email || !isEmailValid(inputs.email)) && erro
-              ? 'input--error'
-              : ''
-          }
+          className={!inputs.nome && erro ? 'input--error' : ''}
         />
       </div>
       <div className='keyboard'>
@@ -140,9 +146,8 @@ function Cadastro () {
         />
       </div>
       <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
-        <img src="img/seta.svg"></img>
+        <img src='img/seta.svg'></img>
       </div>
-
     </div>
   )
 }
