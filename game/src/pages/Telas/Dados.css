@@ -1,0 +1,84 @@
+.titulo-nome {
+  width: 551px;
+  top: 410px;
+  left: 265px;
+  color: var(--lilac);
+  text-align: center;
+  font-family: 'UNFPABold';
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px;
+}
+/* esse aqui é meio uma gambiarra, eu posicionei primeiro os inputs dps que fui mexer nesse container */
+.inputs{
+  position: absolute;
+  height: 1920px;
+  width: 1080px;
+  top: 30px;
+}
+.lblBirthDate{
+  position: absolute;
+  top: 610px;
+  left: 153px;
+  font-size: 40px;
+  font-family: UNFPABold;
+  color: #8B3F8C;
+}
+/* .select-time{
+  position: absolute;
+  top: 703px;
+  left: 155px;
+  width: 200px;
+  height: 100px;
+  flex-shrink: 0;
+  background: rgba(139, 63, 140, 0.15);
+  border: none;
+  border-bottom: solid 5px #8B3F8C26;
+  font-size: 40px;
+  padding-left: 30px;
+} */
+select{
+  position: absolute;
+  top: 703px;
+  width: 230px;
+  height: 100px;
+  background: rgba(139, 63, 140, 0.15);
+  border: none;
+  border-bottom: solid 10px #8B3F8C;
+  font-size: 40px;
+  font-family: UNFPABold;
+  color: #8B3F8C;
+  padding-left: 30px;
+  line-height: 1;
+  background: url("http://localhost:5000/img/arrow-select.png") no-repeat right #ddd;
+  -webkit-appearance: none;
+  background-position-x: 184px;
+}
+.select-date__day{
+  left: 153px;
+}
+.select-date__month{
+  left: 423px;
+}
+.select-date__year{
+  left: 693px;
+}
+.select-gender{
+  top: 880px;
+  left: 153px;
+  width: 770px;
+  background-position-x: 720px;
+}
+.select-race{
+  top: 1055px;
+  left: 153px;
+  width: 770px;
+  background-position-x: 720px;
+}
+.select-state{
+  top: 1230px;
+  left: 153px;
+  width: 770px;
+  background-position-x: 720px;
+}
