@@ -3,26 +3,29 @@
   z-index: 2;
   width: 80%;
   left: 10%;
-  top: 1170px;
+  top: 1070px;
 }
 
 .hg-theme-default {
-  background-color: red;
+  background-color: #FEFEFE;
   color: black;
 }
-
+/* ECE2ED */
 .hg-theme-default .hg-button {
-  background-color: black;
-  border: solid 2px black;
-  height: 50px;
-  font-size: 25px;
+  background-color: #FEFEFE;
+  border: solid 2px rgba(0, 0, 0, 0.6);
+  height: 80px;
+  font-size: 26px;
   border-radius: 10px;
 }
 
 .hg-button[data-skbtn="@gmail.com"] {
   max-width: 180px;
 }
-
+.hg-button[data-skbtn="@gmail.com"],.hg-button[data-skbtn=".com"],.hg-button[data-skbtn="{space}"],
+.hg-button[data-skbtn="@"]{
+  background-color: #ECE2ED !important;
+}
 input {
   position: absolute;
   z-index: 2;

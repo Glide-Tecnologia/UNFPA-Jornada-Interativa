@@ -105,16 +105,22 @@ function Cadastro () {
 
   return (
     <div className='cadastro'>
+
+      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+
+      <div className='mensagem-comentario absolute'>Algum outro que não foi mencionado?</div>
+
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
+      <img src='img/elemento-44.png' className='elemento-5 absolute' />
       <div className='inputs'>
         <input
           ref={inputRef}
-          id='email'
+          id='inputComentario'
           autoComplete='off'
           type='text'
           value={getInputValue('email')}
           onFocus={() => setInputName('email')}
-          placeholder={'Qual é seu email?'}
+          placeholder={''}
           onChange={onChangeInput}
           className={
             (!inputs.email || !isEmailValid(inputs.email)) && erro
@@ -133,9 +139,10 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar' onTouchStart={() => salvar()}>
-        ACEITO
+      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+        <img src="img/seta.svg"></img>
       </div>
+
     </div>
   )
 }
