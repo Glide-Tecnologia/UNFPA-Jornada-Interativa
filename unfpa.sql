@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 12/12/2023 às 18:38
+-- Tempo de geração: 13/12/2023 às 14:38
 -- Versão do servidor: 8.0.30
 -- Versão do PHP: 8.1.10
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `unfpa`
 --
-CREATE DATABASE IF NOT EXISTS `unfpa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `unfpa`;
 
 -- --------------------------------------------------------
 
@@ -34,7 +32,7 @@ CREATE TABLE `jogador` (
   `nome` varchar(255) DEFAULT NULL,
   `dataNascimento` varchar(255) DEFAULT NULL,
   `genero` varchar(255) DEFAULT NULL,
-  `raça` varchar(255) DEFAULT NULL,
+  `raca` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `estado` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `conhece` varchar(255) NOT NULL,
@@ -48,14 +46,11 @@ CREATE TABLE `jogador` (
 -- Despejando dados para a tabela `jogador`
 --
 
-INSERT INTO `jogador` (`id`, `nome`, `dataNascimento`, `genero`, `raça`, `estado`, `email`, `conhece`, `eixo`, `temas`, `outroTema`, `dataCadastro`) VALUES
-(9, NULL, NULL, NULL, NULL, NULL, NULL, 'Sim', 'Espaço e mobilidade', '[\"Igualdade de Gênero\",\"Políticas de juventude fortalecidas\",\"Cidades inclusivas e transporte de qualidade\",\"Dignidade mentrual\",\"Educação em sexualidade\"]', NULL, '2023-12-12 11:00:24'),
-(10, NULL, NULL, NULL, NULL, NULL, NULL, 'Sim', 'Espaço e mobilidade', '[\"Igualdade de Gênero\",\"Políticas de juventude fortalecidas\",\"Cidades inclusivas e transporte de qualidade\",\"Dignidade mentrual\",\"Educação em sexualidade\"]', NULL, '2023-12-12 11:01:09'),
-(11, NULL, NULL, NULL, NULL, NULL, NULL, 'Não', 'undefined', '[\"Educação em sexualidade\",\"Direitos dos povos indígenas\",\"Igualdade racial\",\"Paz, segurança e erradicação de violências\",\"Cidades inclusivas e transporte de qualidade\"]', NULL, '2023-12-12 11:10:10'),
-(12, NULL, NULL, NULL, NULL, NULL, NULL, 'Não', 'undefined', '[\"Saúde, incluindo saúde sexual e reprodutiva\",\"Cidades inclusivas e transporte de qualidade\",\"Educação de qualidade e empregabilidade\",\"Paz, segurança e erradicação de violências\",\"Meio-ambiente e sustentabilidade\"]', NULL, '2023-12-12 11:27:41'),
-(13, NULL, NULL, NULL, NULL, NULL, NULL, 'Não', 'undefined', '[\"Cidades inclusivas e transporte de qualidade\",\"Saúde, incluindo saúde sexual e reprodutiva\",\"Paz, segurança e erradicação de violências\",\"Educação de qualidade e empregabilidade\",\"Meio-ambiente e sustentabilidade\"]', NULL, '2023-12-12 11:27:51'),
-(14, NULL, NULL, NULL, NULL, NULL, NULL, 'Não', 'undefined', '[\"Educação de qualidade e empregabilidade\",\"Cidades inclusivas e transporte de qualidade\",\"Saúde, incluindo saúde sexual e reprodutiva\",\"Paz, segurança e erradicação de violências\",\"Meio-ambiente e sustentabilidade\"]', NULL, '2023-12-12 11:28:02'),
-(15, NULL, NULL, NULL, NULL, NULL, NULL, 'Não', 'Espaço e mobilidade', '[\"Direitos das pessoas com deficiência\",\"Igualdade racial\",\"Dignidade mentrual\",\"Igualdade de Gênero\",\"Meio-ambiente e sustentabilidade\"]', 'carro', '2023-12-12 12:05:42');
+INSERT INTO `jogador` (`id`, `nome`, `dataNascimento`, `genero`, `raca`, `estado`, `email`, `conhece`, `eixo`, `temas`, `outroTema`, `dataCadastro`) VALUES
+(15, 'Davi Cardoso', '15/Março/1994', 'Homem cis', 'Branca', 'RJ', NULL, 'Não', 'Espaço e mobilidade', '[\"Direitos das pessoas com deficiência\",\"Igualdade racial\",\"Dignidade mentrual\",\"Igualdade de Gênero\",\"Meio-ambiente e sustentabilidade\"]', NULL, '2023-12-12 12:05:42'),
+(16, 'Hgggg', '10/Maio/1914', 'Homem cis', 'Parda', 'BA', 'dddd@gmail.com', 'Não', 'Espaço e mobilidade', '[\"Direitos das pessoas com deficiência\",\"Direitos dos povos indígenas\",\"Igualdade racial\",\"Direitos LGBTQIA+\",\"Igualdade de Gênero\"]', 'dddd', '2023-12-13 09:43:54'),
+(17, 'Eddd', '4/Abril/1913', 'Homem cis', 'Parda', 'BA', 'ttff@gmail.com', 'Não', 'Espaço e mobilidade', '[\"Direitos das pessoas com deficiência\",\"Educação em sexualidade\",\"Direitos dos povos indígenas\",\"Paz, segurança e erradicação de violências\",\"Igualdade racial\"]', NULL, '2023-12-13 10:07:03'),
+(18, 'Davi', '15/Março/1994', 'Homem cis', 'Branca', 'SP', 'davi@gmail.com', 'Sim', 'Saúde', '[\"Cidades inclusivas e transporte de qualidade\",\"Igualdade de Gênero\",\"Saúde, incluindo saúde sexual e reprodutiva\",\"Paz, segurança e erradicação de violências\",\"Igualdade racial\"]', 'qqq', '2023-12-13 10:43:03');
 
 --
 -- Índices para tabelas despejadas
@@ -75,7 +70,7 @@ ALTER TABLE `jogador`
 -- AUTO_INCREMENT de tabela `jogador`
 --
 ALTER TABLE `jogador`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

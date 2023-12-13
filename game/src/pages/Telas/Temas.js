@@ -98,7 +98,7 @@ function Temas () {
           className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Dignidade mentrual')}`}
           onTouchStart={() => adicionar('Dignidade mentrual')}
         >
-          Dignidade mentrual
+          Dignidade menstrual 
         </div>
         <div
           className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Direitos LGBTQIA+')}`}
