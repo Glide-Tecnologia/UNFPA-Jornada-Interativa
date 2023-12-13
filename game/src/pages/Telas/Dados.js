@@ -5,6 +5,7 @@ import axios from 'axios'
 import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
 import './Dados.css'
+import { animateElement } from '../animate'
 
 function Cadastro () {
   const navigate = useNavigate()
@@ -177,13 +178,21 @@ function Cadastro () {
     return optionsState
   }
 
+  useEffect(() => {
+    let delay = 100;
+    animateElement(".icpd-30", "rotateIn", delay)
+    animateElement(".titulo-nome", "fadeInDown", delay+300)
+    animateElement(".inputs", "fadeIn", delay+700)
+    animateElement(".btn-salvar-comentario", "bounceIn", delay+1200)
+  }, [])
+
   return (
     <div className='cadastro'>
-      <img src='img/icpd-30.png' className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
-      <div className='titulo-nome absolute'>Estamos quase acabando!</div>
+      <div className='titulo-nome absolute hidden'>Estamos quase acabando!</div>
 
-      <div className='inputs'>
+      <div className='inputs hidden'>
         <label className='lblBirthDate'>Data de Nascimento:</label>
         <select
           defaultValue=''
@@ -252,7 +261,7 @@ function Cadastro () {
           {buildStates()}
         </select>
       </div>
-      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
         <img src='img/seta.svg'></img>
       </div>
     </div>
