@@ -1,4 +1,10 @@
-.btn-temas.active {
+.btn-temas.active,
+.btn-dignidade.active,
+.btn-saude.active,
+.btn-espaco.active,
+.btn-governo.active,
+.btn-sustentabilidade.active {
   background-color: var(--purple);
   color: var(--orange);
 }
+

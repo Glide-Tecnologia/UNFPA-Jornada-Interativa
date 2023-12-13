@@ -10,14 +10,16 @@
   font-weight: 700;
   line-height: 80px;
 }
+
 /* esse aqui é meio uma gambiarra, eu posicionei primeiro os inputs dps que fui mexer nesse container */
-.inputs{
+.inputs {
   position: absolute;
   height: 1920px;
   width: 1080px;
   top: 30px;
 }
-.lblBirthDate{
+
+.lblBirthDate {
   position: absolute;
   top: 610px;
   left: 153px;
@@ -25,6 +27,7 @@
   font-family: UNFPABold;
   color: #8B3F8C;
 }
+
 /* .select-time{
   position: absolute;
   top: 703px;
@@ -38,7 +41,7 @@
   font-size: 40px;
   padding-left: 30px;
 } */
-select{
+select {
   position: absolute;
   top: 703px;
   width: 230px;
@@ -55,28 +58,38 @@ select{
   -webkit-appearance: none;
   background-position-x: 184px;
 }
-.select-date__day{
+
+.select-date__day {
   left: 153px;
 }
-.select-date__month{
+
+.select-date__month {
   left: 423px;
 }
-.select-date__year{
+
+.select-date__year {
   left: 693px;
 }
-.select-gender{
+
+.select--error {
+  box-shadow: 0 0 50px 5px red;
+}
+
+.select-gender {
   top: 880px;
   left: 153px;
   width: 770px;
   background-position-x: 720px;
 }
-.select-race{
+
+.select-race {
   top: 1055px;
   left: 153px;
   width: 770px;
   background-position-x: 720px;
 }
-.select-state{
+
+.select-state {
   top: 1230px;
   left: 153px;
   width: 770px;

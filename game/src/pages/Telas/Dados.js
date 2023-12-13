@@ -5,31 +5,44 @@ import axios from 'axios'
 import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
 import './Dados.css'
-import DataVaultComponent from '../../components/DataVault'
-import Configuration from '../../components/Configuration/Configuration'
 
 function Cadastro () {
-  const [inputs, setInputs] = useState({})
-  const [layoutName, setLayoutName] = useState('default')
-  const [inputName, setInputName] = useState('default')
-  const keyboard = useRef()
-  const [erro, setErro] = useState(false)
-  const [isChecked, setIsChecked] = useState(false)
-  const [fieldsChecked, setFieldsChecked] = useState(false)
-
   const navigate = useNavigate()
+
+  const [day, setDay] = useState('')
+  const [month, setMonth] = useState('')
+  const [year, setYear] = useState('')
+  const [gender, setGender] = useState('')
+  const [race, setRace] = useState('')
+  const [state, setState] = useState('')
+  const [erro, setErro] = useState(false)
+
+  useEffect(() => {
+    const time = setTimeout(() => {
+      setErro(false)
+    }, 1000)
+    return () => clearTimeout(time)
+  }, [erro])
 
   const salvar = async () => {
     console.log('Tentando Salvar')
-    if (inputs.email && isEmailValid(inputs.email)) {
+    const id = parseInt(localStorage.getItem('idJogador'))
+
+    if (day && month && year && gender && race && state) {
+      console.log('Legal')
       try {
-        const response = await axios.post('http://localhost:3001/cadastros', {
-          email: inputs.email
+        const response = await axios.put(`http://localhost:3001/dados/${id}`, {
+          dataNascimento: `${day}/${month}/${year}`,
+          genero: gender,
+          raca: race,
+          estado: state
         })
-        localStorage.setItem('idJogador', response.data.id)
-        localStorage.setItem('email', inputs.email)
+        localStorage.setItem('nome', `${day}/${month}/${year}`)
+        localStorage.setItem('nome', gender)
+        localStorage.setItem('nome', race)
+        localStorage.setItem('nome', state)
         console.log('Salvou')
-        navigate('/menu')
+        navigate('/email')
       } catch (error) {
         navigate('/erro')
       }
@@ -38,188 +51,209 @@ function Cadastro () {
     }
   }
 
-  const customLayout = {
-    // Defina o layout brasileiro personalizado aqui
-    default: [
-      '1 2 3 4 5 6 7 8 9 0 {bksp}',
-      'q w e r t y u i o p',
-      'a s d f g h j k l ç',
-      'z x c v b n m . - _',
-      '@ {space} .com @gmail.com'
-    ],
-    shift: [
-      '1 2 3 4 5 6 7 8 9 0 {bksp}',
-      'q w e r t y u i o p',
-      'a s d f g h j k l ç',
-      '{shift} z x c v b n m , .',
-      '{space}'
-    ],
-    display: {
-      '{bksp}': 'delete'
-    }
-  }
-
-  const isEmailValid = email => {
-    // Expressão regular para validar um e-mail
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-
-    return emailPattern.test(email)
-  }
-
-  useEffect(() => {
-    const time = setTimeout(() => {
-      setFieldsChecked(false)
-    }, 1000)
-    return () => clearTimeout(time)
-  }, [fieldsChecked])
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
-  }
-
-  function openPopup () {
-    const popup = document.getElementById('popup')
-    popup.classList.add('show')
-  }
-
-  function closePopup () {
-    const popup = document.getElementById('popup')
-    popup.classList.remove('show')
-  }
-
-  const onChangeAll = inputs => {
-    setInputs({ ...inputs })
-    keyboard.current.setInput(inputs.telefone, 'telefone')
-    console.log('Inputs changed', inputs.telefone)
-  }
-
-  const handleShift = () => {
-    const newLayoutName = layoutName === 'default' ? 'shift' : 'default'
-    setLayoutName(newLayoutName)
-  }
-
-  const onKeyPress = button => {
-    if (button === '{shift}' || button === '{lock}') handleShift()
-  }
-
-  const onChangeInput = event => {
-    const inputVal = event.target.value
-
-    setInputs({
-      ...inputs,
-      [inputName]: inputVal
-    })
-  }
-
-  const getInputValue = inputName => {
-    return inputs[inputName] || ''
-  }
-
-  const [touchCount, setTouchCount] = useState(0)
-  
-  const handleTouch = () => {
-    setTouchCount(prevCount => prevCount + 1)
-  }
-
-  useEffect(() => {
-    if (touchCount === 5) {
-      navigate('/logs')
-      setTouchCount(0) // Reinicia a contagem após 5 toques
-    }
-  }, [touchCount])
-  // const [days, setDays] = useState([])
-
-  function buildDays(){
-    var days = [];
+  function buildDays () {
+    var days = []
     for (let i = 1; i <= 31; i++) {
-      days.push(<option key={i} value={i}>{i}</option>)
+      days.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      )
     }
-    return days; 
+    return days
   }
 
-  function buildMonths(){
-    var months = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
-    var optionsMonths=[]
+  function buildMonths () {
+    var months = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro'
+    ]
+    var optionsMonths = []
     months.forEach(element => {
-      optionsMonths.push(<option key={element} value={element}>{element}</option>)
-    });
-    return optionsMonths; 
+      optionsMonths.push(
+        <option key={element} value={element}>
+          {element}
+        </option>
+      )
+    })
+    return optionsMonths
   }
 
-  function buildYears(){
-    var years = [];
+  function buildYears () {
+    var years = []
     for (let i = 1910; i <= 2023; i++) {
-      years.push(<option key={i} value={i}>{i}</option>)
+      years.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      )
     }
-    return years; 
+    return years
   }
 
-  function buildGenders(){
-    var gender = ["Mulher trans","Mulher cis","Homem cis","Homem trans","Não-binarie","Prefiro não responder","Outro"];
-    var optionsGender=[]
+  function buildGenders () {
+    var gender = [
+      'Mulher trans',
+      'Mulher cis',
+      'Homem cis',
+      'Homem trans',
+      'Não-binarie',
+      'Prefiro não responder',
+      'Outro'
+    ]
+    var optionsGender = []
     gender.forEach(element => {
-      optionsGender.push(<option key={element} value={element}>{element}</option>)
-    });
-    return optionsGender; 
+      optionsGender.push(
+        <option key={element} value={element}>
+          {element}
+        </option>
+      )
+    })
+    return optionsGender
   }
 
-  function buildRaces(){
-    var race = ["Preta", "Parda", "Branca", "Indígena", "Amarela"];
-    var optionsRace=[]
+  function buildRaces () {
+    var race = ['Preta', 'Parda', 'Branca', 'Indígena', 'Amarela']
+    var optionsRace = []
     race.forEach(element => {
-      optionsRace.push(<option key={element} value={element}>{element}</option>)
-    });
-    return optionsRace; 
+      optionsRace.push(
+        <option key={element} value={element}>
+          {element}
+        </option>
+      )
+    })
+    return optionsRace
   }
 
-  function buildStates(){
-    var states = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO","EX"]
-    var optionsState=[]
+  function buildStates () {
+    var states = [
+      'AC',
+      'AL',
+      'AP',
+      'AM',
+      'BA',
+      'CE',
+      'DF',
+      'ES',
+      'GO',
+      'MA',
+      'MT',
+      'MS',
+      'MG',
+      'PA',
+      'PB',
+      'PR',
+      'PE',
+      'PI',
+      'RJ',
+      'RN',
+      'RS',
+      'RO',
+      'RR',
+      'SC',
+      'SP',
+      'SE',
+      'TO',
+      'EX'
+    ]
+    var optionsState = []
     states.forEach(element => {
-      optionsState.push(<option key={element} value={element}>{element}</option>)
-    });
-    return optionsState; 
+      optionsState.push(
+        <option key={element} value={element}>
+          {element}
+        </option>
+      )
+    })
+    return optionsState
   }
-
 
   return (
     <div className='cadastro'>
-      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute' />
 
       <div className='titulo-nome absolute'>Estamos quase acabando!</div>
-      
-      <Configuration />
-      {/* <DataVaultComponent /> */}
-      <div className='btn-logs' onTouchStart={handleTouch}></div>
+
       <div className='inputs'>
         <label className='lblBirthDate'>Data de Nascimento:</label>
-        <select className='select-date select-date__day'>
-          <option value="" disabled selected>Dia</option>
+        <select
+          defaultValue=''
+          className={`select-date select-date__day${
+            !day && erro ? ' select--error' : ''
+          }`}
+          onChange={e => setDay(e.target.value)}
+        >
+          <option value='' disabled>
+            Dia
+          </option>
           {buildDays()}
         </select>
-        <select className='select-date select-date__month'>
-          <option value="" disabled selected>Mês</option>
+        <select
+          defaultValue=''
+          className={`select-date select-date__month${
+            !day && erro ? ' select--error' : ''
+          }`}
+          onChange={e => setMonth(e.target.value)}
+        >
+          <option value='' disabled>
+            Mês
+          </option>
           {buildMonths()}
         </select>
-        <select className='select-date select-date__year'>
-          <option value="" disabled selected>Ano</option>
+        <select
+          defaultValue=''
+          className={`select-date select-date__year${
+            !day && erro ? ' select--error' : ''
+          }`}
+          onChange={e => setYear(e.target.value)}
+        >
+          <option value='' disabled>
+            Ano
+          </option>
           {buildYears()}
         </select>
-        <select className='select-gender'>
-          <option value="" disabled selected>Gênero</option>
+        <select
+          defaultValue=''
+          className={`select-gender${!day && erro ? ' select--error' : ''}`}
+          onChange={e => setGender(e.target.value)}
+        >
+          <option value='' disabled>
+            Gênero
+          </option>
           {buildGenders()}
         </select>
-        <select className='select-race'>
-          <option value="" disabled selected>Raça</option>
+        <select
+          defaultValue=''
+          className={`select-race${!day && erro ? ' select--error' : ''}`}
+          onChange={e => setRace(e.target.value)}
+        >
+          <option value='' disabled>
+            Raça
+          </option>
           {buildRaces()}
         </select>
-        <select className='select-state'>
-          <option value="" disabled selected>Estado de Residência</option>
+        <select
+          defaultValue=''
+          className={`select-state${!day && erro ? ' select--error' : ''}`}
+          onChange={e => setState(e.target.value)}
+        >
+          <option value='' disabled>
+            Estado de Residência
+          </option>
           {buildStates()}
         </select>
       </div>
       <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
-        <img src="img/seta.svg"></img>
+        <img src='img/seta.svg'></img>
       </div>
     </div>
   )

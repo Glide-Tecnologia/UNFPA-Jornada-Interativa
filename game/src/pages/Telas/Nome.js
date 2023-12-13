@@ -21,6 +21,13 @@ function Cadastro () {
     inputRef.current.focus()
   }, [])
 
+  useEffect(() => {
+    const time = setTimeout(() => {
+      setErro(false)
+    }, 1000)
+    return () => clearTimeout(time)
+  }, [erro])
+
   const salvar = async () => {
     console.log('Tentando Salvar')
     const id = parseInt(localStorage.getItem('idJogador'))
