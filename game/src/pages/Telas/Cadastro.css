@@ -3,13 +3,14 @@
   z-index: 2;
   width: 80%;
   left: 10%;
-  top: 1070px;
+  top: 1100px;
 }
 
 .hg-theme-default {
   background-color: #FEFEFE;
   color: black;
 }
+
 /* ECE2ED */
 .hg-theme-default .hg-button {
   background-color: #FEFEFE;
@@ -22,10 +23,18 @@
 .hg-button[data-skbtn="@gmail.com"] {
   max-width: 180px;
 }
-.hg-button[data-skbtn="@gmail.com"],.hg-button[data-skbtn=".com"],.hg-button[data-skbtn="{space}"],
-.hg-button[data-skbtn="@"]{
+
+.hg-button[data-skbtn="@gmail.com"],
+.hg-button[data-skbtn=".com"],
+.hg-button[data-skbtn="{space}"],
+.hg-button[data-skbtn="@"] {
   background-color: #ECE2ED !important;
 }
+
+input:focus {
+  outline: none;
+}
+
 input {
   position: absolute;
   z-index: 2;
@@ -37,8 +46,8 @@ input {
   border-radius: 100px;
   border: 0;
   text-align: left;
-  font-size: 48px;
-  font-family: 'GalanoGrotesqueMedium';
+  font-size: 38px !important;
+  font-family: 'UNFPA' !important;
 }
 
 input::placeholder {
@@ -106,7 +115,7 @@ input::placeholder {
   color: var(--blue);
 }
 
-.btn-logs{
+.btn-logs {
   position: absolute;
   /* background-color: red; */
   width: 200px;

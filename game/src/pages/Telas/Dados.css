@@ -21,7 +21,7 @@
 
 .lblBirthDate {
   position: absolute;
-  top: 610px;
+  top: 640px;
   left: 153px;
   font-size: 40px;
   font-family: UNFPABold;
@@ -43,7 +43,7 @@
 } */
 select {
   position: absolute;
-  top: 703px;
+  top: 733px;
   width: 230px;
   height: 100px;
   background: rgba(139, 63, 140, 0.15);
@@ -76,21 +76,21 @@ select {
 }
 
 .select-gender {
-  top: 880px;
+  top: 910px;
   left: 153px;
   width: 770px;
   background-position-x: 720px;
 }
 
 .select-race {
-  top: 1055px;
+  top: 1085px;
   left: 153px;
   width: 770px;
   background-position-x: 720px;
 }
 
 .select-state {
-  top: 1230px;
+  top: 1260px;
   left: 153px;
   width: 770px;
   background-position-x: 720px;

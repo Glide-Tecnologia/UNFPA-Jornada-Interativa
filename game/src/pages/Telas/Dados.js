@@ -209,7 +209,7 @@ function Cadastro () {
         <select
           defaultValue=''
           className={`select-date select-date__month${
-            !day && erro ? ' select--error' : ''
+            !month && erro ? ' select--error' : ''
           }`}
           onChange={e => setMonth(e.target.value)}
         >
@@ -221,7 +221,7 @@ function Cadastro () {
         <select
           defaultValue=''
           className={`select-date select-date__year${
-            !day && erro ? ' select--error' : ''
+            !year && erro ? ' select--error' : ''
           }`}
           onChange={e => setYear(e.target.value)}
         >
@@ -232,7 +232,7 @@ function Cadastro () {
         </select>
         <select
           defaultValue=''
-          className={`select-gender${!day && erro ? ' select--error' : ''}`}
+          className={`select-gender${!gender && erro ? ' select--error' : ''}`}
           onChange={e => setGender(e.target.value)}
         >
           <option value='' disabled>
@@ -242,7 +242,7 @@ function Cadastro () {
         </select>
         <select
           defaultValue=''
-          className={`select-race${!day && erro ? ' select--error' : ''}`}
+          className={`select-race${!race && erro ? ' select--error' : ''}`}
           onChange={e => setRace(e.target.value)}
         >
           <option value='' disabled>
@@ -252,7 +252,7 @@ function Cadastro () {
         </select>
         <select
           defaultValue=''
-          className={`select-state${!day && erro ? ' select--error' : ''}`}
+          className={`select-state${!state && erro ? ' select--error' : ''}`}
           onChange={e => setState(e.target.value)}
         >
           <option value='' disabled>
