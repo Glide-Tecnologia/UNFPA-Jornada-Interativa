@@ -8,13 +8,18 @@ function Eixos () {
   const [eixo, setEixo] = useState('')
 
   const salvar = () => {
-    // navigate('/estrategia')
+    navigate('/estrategia')
   }
 
   const selecionar = condicao => {
-    localStorage.setItem('eixo', condicao)
     setEixo(condicao)
+    localStorage.setItem('eixo', condicao)
   }
+
+  useEffect(() => {
+    console.log(eixo)
+  }, [eixo])
+  
 
   useEffect(() => {
     let delay = 100
@@ -34,12 +39,14 @@ function Eixos () {
     <div>
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
-      <img
-        src='img/seta.svg'
-        className='seta absolute hidden'
-        onTouchStart={() => salvar()}
-        onClick={() => salvar()}
-      />
+      {eixo != "" && (
+        <img
+          src='img/seta.svg'
+          className='seta absolute hidden'
+          onTouchStart={() => salvar()}
+          onClick={() => salvar()}
+        />
+      )}
       <div className={`titulo-eixos absolute hidden`}>
         <h2>Qual desses eixos te chamou mais atenção?</h2>
       </div>
@@ -54,28 +61,36 @@ function Eixos () {
         Dignidade e Direitos Humanos
       </div>
       <div
-        className='btn-saude absolute hidden'
+        className={`btn-saude absolute hidden ${temaAtivo(
+          'Saúde'
+        )}`}
         onTouchStart={() => selecionar('Saúde')}
         onClick={() => selecionar('Saúde')}
       >
         Saúde
       </div>
       <div
-        className='btn-espaco absolute hidden'
+        className={`btn-espaco absolute hidden ${temaAtivo(
+          'Espaço e mobilidade'
+        )}`}
         onTouchStart={() => selecionar('Espaço e mobilidade')}
         onClick={() => selecionar('Espaço e mobilidade')}
       >
         Espaço e mobilidade
       </div>
       <div
-        className='btn-governo absolute hidden'
+        className={`btn-governo absolute hidden ${temaAtivo(
+          'Governos com responsabilidade'
+        )}`}
         onTouchStart={() => selecionar('Governos com responsabilidade')}
         onClick={() => selecionar('Governos com responsabilidade')}
       >
         Governos com responsabilidade
       </div>
       <div
-        className='btn-sustentabilidade absolute hidden'
+        className={`btn-sustentabilidade absolute hidden ${temaAtivo(
+          'Sustentabilidade'
+        )}`}
         onTouchStart={() => selecionar('Sustentabilidade')}
         onClick={() => selecionar('Sustentabilidade')}
       >
