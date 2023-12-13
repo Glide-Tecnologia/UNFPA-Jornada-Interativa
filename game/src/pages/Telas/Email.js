@@ -6,6 +6,7 @@ import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
 import DataVaultComponent from '../../components/DataVault'
 import Configuration from '../../components/Configuration/Configuration'
+import { animateElement } from '../animate'
 
 function Cadastro () {
   const [inputs, setInputs] = useState({})
@@ -25,6 +26,15 @@ function Cadastro () {
 
   useEffect(() => {
     inputRef.current.focus()
+    let delay = 100
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.titulo-email', 'fadeInDown', delay + 300)
+    animateElement('.label-input-email', 'fadeInLeft', delay + 500)
+    animateElement('.inputs', 'fadeIn', delay + 600)
+    animateElement('.keyboard', 'fadeInUp', delay + 700)
+    animateElement('#terms', 'fadeInLeft', delay + 1100)
+    animateElement('#terms2', 'fadeInLeft', delay + 1300)
+    animateElement('.btn-salvar-comentario', 'bounceIn', delay + 1700)
   }, [])
 
   useEffect(() => {
@@ -159,13 +169,13 @@ function Cadastro () {
 
   return (
     <div className='email'>
-      <img src='img/icpd-30.png' className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
-      <div className='titulo-email absolute'>Estamos quase acabando!</div>
+      <div className='titulo-email absolute hidden'>Estamos quase acabando!</div>
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
-      <div className='label-input-email absolute'>Email:</div>
-      <div className='inputs'>
+      <div className='label-input-email absolute hidden'>Email:</div>
+      <div className='inputs hidden'>
         <input
           ref={inputRef}
           id='inputEmail'
@@ -182,7 +192,7 @@ function Cadastro () {
           }
         />
       </div>
-      <div className='keyboard keyboard-email'>
+      <div className='keyboard keyboard-email hidden'>
         <Keyboard
           keyboardRef={r => (keyboard.current = r)}
           inputName={inputName}
@@ -193,7 +203,7 @@ function Cadastro () {
         />
       </div>
 
-      <div id='terms' className='absolute'>
+      <div id='terms' className='absolute hidden'>
         <div id='termsCheck'>
           <label className='container-checkbox'>
             <span className='text-terms'>
@@ -214,7 +224,7 @@ function Cadastro () {
           </label>
         </div>
       </div>
-      <div id='terms2' className='absolute'>
+      <div id='terms2' className='absolute hidden'>
         <div id='termsCheck'>
           <label className='container-checkbox'>
             <span className='text-terms'>
@@ -234,7 +244,7 @@ function Cadastro () {
         </div>
       </div>
 
-      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
         <img src='img/seta.svg'></img>
       </div>
     </div>
