@@ -19,6 +19,10 @@ function Cadastro () {
 
   const inputRef = useRef(null)
 
+  const home = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
     inputRef.current.focus()
 
@@ -136,6 +140,11 @@ function Cadastro () {
 
   return (
     <div className='nome'>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
       <div className='titulo-nome absolute hidden'>Estamos quase acabando!</div>

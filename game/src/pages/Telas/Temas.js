@@ -25,6 +25,10 @@ function Temas () {
     }
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   const salvar = async () => {
     localStorage.setItem('tema', JSON.stringify(temasSelecionados))
     const conhece = localStorage.getItem('conhece')
@@ -47,22 +51,32 @@ function Temas () {
 
   const temaAtivo = tema => (temasSelecionados.includes(tema) ? 'active' : '')
 
-  let animationDone = false;
-  const animationDoneRef = useRef(animationDone); 
+  let animationDone = false
+  const animationDoneRef = useRef(animationDone)
   useEffect(() => {
-    animationDoneRef.current = animationDone;
-  }, [animationDone]);
+    animationDoneRef.current = animationDone
+  }, [animationDone])
 
   useEffect(() => {
-    let delay = 100;
-    animateElement(".texto-temas", "fadeIn", delay)
-    animateElement(".btn-temas", "fadeInDown", delay+300, {selectAll: true, delayItems: 50})
-    animateElement(".texto-rodape", "fadeInLeft", delay+1200)
-    setTimeout(()=>{animationDoneRef.current = true;}, delay+1600)
+    let delay = 100
+    animateElement('.texto-temas', 'fadeIn', delay)
+    animateElement('.btn-temas', 'fadeInDown', delay + 300, {
+      selectAll: true,
+      delayItems: 50
+    })
+    animateElement('.texto-rodape', 'fadeInLeft', delay + 1200)
+    setTimeout(() => {
+      animationDoneRef.current = true
+    }, delay + 1600)
   }, [])
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/elemento-7.png' className='elemento-3 absolute' />
       {temasSelecionados.length >= 5 && (
         <img
@@ -75,13 +89,14 @@ function Temas () {
         <p>Para você, quais são os cinco temas mais importantes?</p>
       </div>
       <div className='texto-rodape absolute hidden'>
-        *retiradas Declaração das juventudes de América Latina e o Caribe, do Fórum de Juventudes Montevidéu +10
+        *retiradas Declaração das juventudes de América Latina e o Caribe, do
+        Fórum de Juventudes Montevidéu +10
       </div>
       <div className='temas absolute'>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Saúde, incluindo saúde sexual e reprodutiva'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Saúde, incluindo saúde sexual e reprodutiva')}`}
           onTouchStart={() =>
             adicionar('Saúde, incluindo saúde sexual e reprodutiva')
           }
@@ -89,27 +104,33 @@ function Temas () {
           Saúde, incluindo saúde sexual e reprodutiva
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Igualdade de Gênero')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Igualdade de Gênero')}`}
           onTouchStart={() => adicionar('Igualdade de Gênero')}
         >
           Igualdade de Gênero
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Dignidade mentrual')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Dignidade mentrual')}`}
           onTouchStart={() => adicionar('Dignidade mentrual')}
         >
-          Dignidade menstrual 
+          Dignidade menstrual
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Direitos LGBTQIA+')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Direitos LGBTQIA+')}`}
           onTouchStart={() => adicionar('Direitos LGBTQIA+')}
         >
           Direitos LGBTQIA+
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Paz, segurança e erradicação de violências'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Paz, segurança e erradicação de violências')}`}
           onTouchStart={() =>
             adicionar('Paz, segurança e erradicação de violências')
           }
@@ -117,35 +138,41 @@ function Temas () {
           Paz, segurança e erradicação de violências
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Igualdade racial')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Igualdade racial')}`}
           onTouchStart={() => adicionar('Igualdade racial')}
         >
           Igualdade racial
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Direitos dos povos indígenas')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Direitos dos povos indígenas')}`}
           onTouchStart={() => adicionar('Direitos dos povos indígenas')}
         >
           Direitos dos povos indígenas
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Educação em sexualidade')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Educação em sexualidade')}`}
           onTouchStart={() => adicionar('Educação em sexualidade')}
         >
           Educação em sexualidade
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Direitos das pessoas com deficiência'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Direitos das pessoas com deficiência')}`}
           onTouchStart={() => adicionar('Direitos das pessoas com deficiência')}
         >
           Direitos das pessoas com deficiência
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Cidades inclusivas e transporte de qualidade'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Cidades inclusivas e transporte de qualidade')}`}
           onTouchStart={() =>
             adicionar('Cidades inclusivas e transporte de qualidade')
           }
@@ -153,17 +180,17 @@ function Temas () {
           Cidades inclusivas e transporte de qualidade
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Políticas de juventude fortalecidas'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Políticas de juventude fortalecidas')}`}
           onTouchStart={() => adicionar('Políticas de juventude fortalecidas')}
         >
           Políticas de juventude fortalecidas
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Educação de qualidade e empregabilidade'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Educação de qualidade e empregabilidade')}`}
           onTouchStart={() =>
             adicionar('Educação de qualidade e empregabilidade')
           }
@@ -171,15 +198,17 @@ function Temas () {
           Educação de qualidade e empregabilidade
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-            'Meio-ambiente e sustentabilidade'
-          )}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Meio-ambiente e sustentabilidade')}`}
           onTouchStart={() => adicionar('Meio-ambiente e sustentabilidade')}
         >
           Meio-ambiente e sustentabilidade
         </div>
         <div
-          className={`btn-temas ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo('Combate à fome e à pobreza')}`}
+          className={`btn-temas ${
+            !animationDoneRef.current ? 'hidden' : ''
+          } ${temaAtivo('Combate à fome e à pobreza')}`}
           onTouchStart={() => adicionar('Combate à fome e à pobreza')}
         >
           Combate à fome e à pobreza

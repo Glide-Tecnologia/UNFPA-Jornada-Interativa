@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Telas.css'
 import { animateElement } from '../animate'
@@ -11,17 +11,26 @@ function Conhece () {
     navigate('/cipd')
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
-    let delay = 100;
-    animateElement(".icpd-30", "rotateIn", delay)
-    animateElement(".texto-conhece", "fadeInLeft", delay+200)
-    animateElement(".titulo-conhece", "fadeIn", delay+600)
-    animateElement(".btn-nao", "fadeInDown", delay+900)
-    animateElement(".btn-sim", "fadeInDown", delay+1100)
+    let delay = 100
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.texto-conhece', 'fadeInLeft', delay + 200)
+    animateElement('.titulo-conhece', 'fadeIn', delay + 600)
+    animateElement('.btn-nao', 'fadeInDown', delay + 900)
+    animateElement('.btn-sim', 'fadeInDown', delay + 1100)
   }, [])
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
       <div className='texto-conhece absolute hidden'>

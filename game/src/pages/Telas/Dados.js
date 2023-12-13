@@ -25,6 +25,10 @@ function Cadastro () {
     return () => clearTimeout(time)
   }, [erro])
 
+  const home = () => {
+    navigate('/home')
+  }
+
   const salvar = async () => {
     console.log('Tentando Salvar')
     const id = parseInt(localStorage.getItem('idJogador'))
@@ -179,15 +183,20 @@ function Cadastro () {
   }
 
   useEffect(() => {
-    let delay = 100;
-    animateElement(".icpd-30", "rotateIn", delay)
-    animateElement(".titulo-nome", "fadeInDown", delay+300)
-    animateElement(".inputs", "fadeIn", delay+700)
-    animateElement(".btn-salvar-comentario", "bounceIn", delay+1200)
+    let delay = 100
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.titulo-nome', 'fadeInDown', delay + 300)
+    animateElement('.inputs', 'fadeIn', delay + 700)
+    animateElement('.btn-salvar-comentario', 'bounceIn', delay + 1200)
   }, [])
 
   return (
     <div className='cadastro'>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
       <div className='titulo-nome absolute hidden'>Estamos quase acabando!</div>
@@ -261,7 +270,10 @@ function Cadastro () {
           {buildStates()}
         </select>
       </div>
-      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
+      <div
+        className='btn-salvar-comentario hidden'
+        onTouchStart={() => salvar()}
+      >
         <img src='img/seta.svg'></img>
       </div>
     </div>

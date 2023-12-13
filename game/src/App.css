@@ -86,3 +86,21 @@ p {
   font-weight: 500;
   line-height: 60px;
 }
+
+@keyframes growAnimation {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.btn-home {
+  z-index: 999;
+  bottom: 30px;
+  left: 30px;
+  transform: scale(0);
+  animation: growAnimation 1s ease-in-out forwards;
+}

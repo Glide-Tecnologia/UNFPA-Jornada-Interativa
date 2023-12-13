@@ -11,6 +11,10 @@ function Eixos () {
     navigate('/estrategia')
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   const selecionar = condicao => {
     if (animationDoneRef.current) {
       setEixo(condicao)
@@ -22,11 +26,11 @@ function Eixos () {
     console.log(eixo)
   }, [eixo])
 
-  let animationDone = false;
-  const animationDoneRef = useRef(animationDone); 
+  let animationDone = false
+  const animationDoneRef = useRef(animationDone)
   useEffect(() => {
-    animationDoneRef.current = animationDone;
-  }, [animationDone]);
+    animationDoneRef.current = animationDone
+  }, [animationDone])
 
   useEffect(() => {
     let delay = 100
@@ -38,16 +42,23 @@ function Eixos () {
     animateElement('.btn-governo', 'fadeInDown', delay + 500 + 300)
     animateElement('.btn-sustentabilidade', 'fadeInDown', delay + 500 + 400)
     // animateElement('.seta', 'bounceIn', delay + 1600)
-    setTimeout(()=>{animationDoneRef.current = true;}, delay+1600)
+    setTimeout(() => {
+      animationDoneRef.current = true
+    }, delay + 1600)
   }, [])
 
   const temaAtivo = tema => (tema == eixo ? 'active' : '')
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
-      {eixo != "" && (
+      {eixo != '' && (
         <img
           src='img/seta.svg'
           className='seta absolute'
@@ -60,45 +71,45 @@ function Eixos () {
       </div>
 
       <div
-        className={`btn-dignidade absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-          'Dignidade e Direitos Humanos'
-        )}`}
+        className={`btn-dignidade absolute ${
+          !animationDoneRef.current ? 'hidden' : ''
+        } ${temaAtivo('Dignidade e Direitos Humanos')}`}
         onTouchStart={() => selecionar('Dignidade e Direitos Humanos')}
         onClick={() => selecionar('Dignidade e Direitos Humanos')}
       >
         Dignidade e Direitos Humanos
       </div>
       <div
-        className={`btn-saude absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-          'Saúde'
-        )}`}
+        className={`btn-saude absolute ${
+          !animationDoneRef.current ? 'hidden' : ''
+        } ${temaAtivo('Saúde')}`}
         onTouchStart={() => selecionar('Saúde')}
         onClick={() => selecionar('Saúde')}
       >
         Saúde
       </div>
       <div
-        className={`btn-espaco absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-          'Espaço e mobilidade'
-        )}`}
+        className={`btn-espaco absolute ${
+          !animationDoneRef.current ? 'hidden' : ''
+        } ${temaAtivo('Espaço e mobilidade')}`}
         onTouchStart={() => selecionar('Espaço e mobilidade')}
         onClick={() => selecionar('Espaço e mobilidade')}
       >
         Espaço e mobilidade
       </div>
       <div
-        className={`btn-governo absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-          'Governos com responsabilidade'
-        )}`}
+        className={`btn-governo absolute ${
+          !animationDoneRef.current ? 'hidden' : ''
+        } ${temaAtivo('Governos com responsabilidade')}`}
         onTouchStart={() => selecionar('Governos com responsabilidade')}
         onClick={() => selecionar('Governos com responsabilidade')}
       >
         Governos com responsabilidade
       </div>
       <div
-        className={`btn-sustentabilidade absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
-          'Sustentabilidade'
-        )}`}
+        className={`btn-sustentabilidade absolute ${
+          !animationDoneRef.current ? 'hidden' : ''
+        } ${temaAtivo('Sustentabilidade')}`}
         onTouchStart={() => selecionar('Sustentabilidade')}
         onClick={() => selecionar('Sustentabilidade')}
       >

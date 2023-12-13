@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Telas.css'
 import { animateElement } from '../animate'
@@ -10,16 +10,25 @@ function Corpo () {
     navigate('/vida')
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
-    let delay = 100;
-    animateElement(".icone-pilares", "jackInTheBox", delay)
-    animateElement(".titulo-pilares-itens", "fadeInDown", delay+300)
-    animateElement(".texto-pilares-itens", "fadeIn", delay+500)
-    animateElement(".seta", "bounceIn", delay+1000)
+    let delay = 100
+    animateElement('.icone-pilares', 'jackInTheBox', delay)
+    animateElement('.titulo-pilares-itens', 'fadeInDown', delay + 300)
+    animateElement('.texto-pilares-itens', 'fadeIn', delay + 500)
+    animateElement('.seta', 'bounceIn', delay + 1000)
   }, [])
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
       <img src='img/elemento-5.png' className='elemento-5 absolute' />
       <img
@@ -28,7 +37,10 @@ function Corpo () {
         onTouchStart={() => redireconar()}
         onClick={() => redireconar()}
       />
-      <img src='img/Mão.png' className='icone-pilares icone-mao absolute hidden' />
+      <img
+        src='img/Mão.png'
+        className='icone-pilares icone-mao absolute hidden'
+      />
       <div className='titulo-pilares-itens absolute hidden'>
         <h2>MEU CORPO</h2>
       </div>

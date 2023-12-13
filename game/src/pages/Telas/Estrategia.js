@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Telas.css'
 import { animateElement } from '../animate'
@@ -11,18 +11,27 @@ function Estrategia () {
   }
 
   useEffect(() => {
-    let delay = 100;
-    animateElement(".icpd-30", "rotateIn", delay)
-    animateElement(".titulo-estrategia", "fadeIn", delay+300)
-    animateElement(".mao", "jackInTheBox", delay+600)
-    animateElement(".coracao", "jackInTheBox", delay+600+150)
-    animateElement(".mundo", "jackInTheBox", delay+600+300)
-    animateElement(".subtitulo-estrategia", "fadeIn", delay+1100)
-    animateElement(".btn-como", "bounceIn", delay+1400)
+    let delay = 100
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.titulo-estrategia', 'fadeIn', delay + 300)
+    animateElement('.mao', 'jackInTheBox', delay + 600)
+    animateElement('.coracao', 'jackInTheBox', delay + 600 + 150)
+    animateElement('.mundo', 'jackInTheBox', delay + 600 + 300)
+    animateElement('.subtitulo-estrategia', 'fadeIn', delay + 1100)
+    animateElement('.btn-como', 'bounceIn', delay + 1400)
   }, [])
+
+  const home = () => {
+    navigate('/home')
+  }
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
 

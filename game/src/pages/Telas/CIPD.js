@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Telas.css'
 import { animateElement } from '../animate'
@@ -10,17 +10,26 @@ function CIPD () {
     navigate('/pilares')
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
-    let delay = 100;
-    animateElement(".icpd-30", "rotateIn", delay)
-    animateElement(".titulo-cipd", "fadeInLeft", delay+200)
-    animateElement(".subtitulo-cipd", "fadeInLeft", delay+400)
-    animateElement(".texto-cipd", "fadeInLeft", delay+600)
-    animateElement(".seta", "bounceIn", delay+1100)
+    let delay = 100
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.titulo-cipd', 'fadeInLeft', delay + 200)
+    animateElement('.subtitulo-cipd', 'fadeInLeft', delay + 400)
+    animateElement('.texto-cipd', 'fadeInLeft', delay + 600)
+    animateElement('.seta', 'bounceIn', delay + 1100)
   }, [])
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
       <img

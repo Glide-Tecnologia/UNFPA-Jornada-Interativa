@@ -117,7 +117,7 @@
   width: 444px;
   height: 90px;
   top: 1727px;
-  left: 154px;
+  left: 214px;
   color: #532D53;
   font-family: UNFPA;
   font-size: 25px;
@@ -681,7 +681,7 @@
 } */
 
 .container-checkbox {
-  line-height: 0.9;
+  line-height: 35px;
   margin-left: 79px;
 }
 
@@ -698,7 +698,7 @@
 
 .checkmark {
   position: absolute;
-  top: 0%;
+  top: 9%;
   left: 0;
   height: 44px;
   width: 44px;

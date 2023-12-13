@@ -12,13 +12,20 @@ function Ranking () {
     navigate('/comentario')
   }
 
+  const home = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
     consultarInfo()
     let delay = 100
-    animateElement(".titulo-ranking", "fadeIn", delay);
-    animateElement(".texto-ranking", "fadeInDown", delay+300);
-    animateElement(".ranking__item", "fadeInLeft", delay+600, {selectAll: true, delayItems: 100});
-    animateElement(".seta", "bounceIn", delay+1400);
+    animateElement('.titulo-ranking', 'fadeIn', delay)
+    animateElement('.texto-ranking', 'fadeInDown', delay + 300)
+    animateElement('.ranking__item', 'fadeInLeft', delay + 600, {
+      selectAll: true,
+      delayItems: 100
+    })
+    animateElement('.seta', 'bounceIn', delay + 1400)
   }, [])
 
   const consultarInfo = async () => {
@@ -48,6 +55,11 @@ function Ranking () {
 
   return (
     <div>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
       <div className='titulo-ranking absolute hidden'>
         <h1>Ranking</h1>

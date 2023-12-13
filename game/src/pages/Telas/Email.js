@@ -19,10 +19,15 @@ function Cadastro () {
 
   const [checkbox1Checked, setCheckbox1Checked] = useState(false)
   const [checkbox2Checked, setCheckbox2Checked] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
 
   const navigate = useNavigate()
 
   const inputRef = useRef(null)
+
+  const home = () => {
+    navigate('/home')
+  }
 
   useEffect(() => {
     inputRef.current.focus()
@@ -35,6 +40,9 @@ function Cadastro () {
     animateElement('#terms', 'fadeInLeft', delay + 1100)
     animateElement('#terms2', 'fadeInLeft', delay + 1300)
     animateElement('.btn-salvar-comentario', 'bounceIn', delay + 1700)
+    setTimeout(() => {
+      setIsHidden(false)
+    }, delay + 600)
   }, [])
 
   useEffect(() => {
@@ -169,13 +177,20 @@ function Cadastro () {
 
   return (
     <div className='email'>
+      <img
+        src='img/home.png'
+        className='btn-home absolute'
+        onTouchStart={() => home()}
+      />
       <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
-      <div className='titulo-email absolute hidden'>Estamos quase acabando!</div>
+      <div className='titulo-email absolute hidden'>
+        Estamos quase acabando!
+      </div>
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
       <div className='label-input-email absolute hidden'>Email:</div>
-      <div className='inputs hidden'>
+      <div className={`cadastro ${isHidden ? 'hidden-2' : 'visible'}`}>
         <input
           ref={inputRef}
           id='inputEmail'
@@ -237,14 +252,19 @@ function Cadastro () {
               checked={checkbox2Checked}
               onChange={handleCheckbox2Change}
             />
-            <span className={`checkmark ${
+            <span
+              className={`checkmark ${
                 !checkbox2Checked && erro ? 'check--error' : ''
-              }`}></span>
+              }`}
+            ></span>
           </label>
         </div>
       </div>
 
-      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
+      <div
+        className='btn-salvar-comentario hidden'
+        onTouchStart={() => salvar()}
+      >
         <img src='img/seta.svg'></img>
       </div>
     </div>
