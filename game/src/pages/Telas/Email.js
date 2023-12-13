@@ -16,6 +16,9 @@ function Cadastro () {
   const [isChecked, setIsChecked] = useState(false)
   const [fieldsChecked, setFieldsChecked] = useState(false)
 
+  const [checkbox1Checked, setCheckbox1Checked] = useState(false)
+  const [checkbox2Checked, setCheckbox2Checked] = useState(false)
+
   const navigate = useNavigate()
 
   const inputRef = useRef(null)
@@ -24,23 +27,44 @@ function Cadastro () {
     inputRef.current.focus()
   }, [])
 
+  useEffect(() => {
+    const time = setTimeout(() => {
+      setErro(false)
+    }, 1000)
+    return () => clearTimeout(time)
+  }, [erro])
+
   const salvar = async () => {
     console.log('Tentando Salvar')
-    if (inputs.email && isEmailValid(inputs.email)) {
+    const id = parseInt(localStorage.getItem('idJogador'))
+    if (
+      inputs.email &&
+      isEmailValid(inputs.email) &&
+      checkbox1Checked &&
+      checkbox2Checked
+    ) {
       try {
-        const response = await axios.post('http://localhost:3001/cadastros', {
+        const response = await axios.put(`http://localhost:3001/email/${id}`, {
           email: inputs.email
         })
         localStorage.setItem('idJogador', response.data.id)
         localStorage.setItem('email', inputs.email)
         console.log('Salvou')
-        navigate('/menu')
+        navigate('/mensagem')
       } catch (error) {
         navigate('/erro')
       }
     } else {
       setErro(true)
     }
+  }
+
+  const handleCheckbox1Change = () => {
+    setCheckbox1Checked(!checkbox1Checked)
+  }
+
+  const handleCheckbox2Change = () => {
+    setCheckbox2Checked(!checkbox2Checked)
   }
 
   const customLayout = {
@@ -121,7 +145,7 @@ function Cadastro () {
   }
 
   const [touchCount, setTouchCount] = useState(0)
-  
+
   const handleTouch = () => {
     setTouchCount(prevCount => prevCount + 1)
   }
@@ -135,8 +159,7 @@ function Cadastro () {
 
   return (
     <div className='email'>
-
-      <img src="img/icpd-30.png" className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute' />
 
       <div className='titulo-email absolute'>Estamos quase acabando!</div>
 
@@ -170,32 +193,50 @@ function Cadastro () {
         />
       </div>
 
-      <div id="terms" class="absolute">
-          <div id="termsCheck">
-              <label class="container-checkbox">
-                  <span class="text-terms">Aceito compartilhar informações com o UNFPA e receber comunicados via email</span>
-                  <input id="inputCheckbox" type="checkbox" />
-                  <span class="checkmark"></span>
-              </label>
-          </div>
-          
-      </div>    
-      <div id="terms2" class="absolute">
-          <div id="termsCheck">
-              <label class="container-checkbox">
-                  <span class="text-terms">Estou ciente que meus dados não serão comercializados ou compartilhados</span>
-                  <input id="inputCheckbox" type="checkbox" />
-                  <span class="checkmark"></span>
-              </label>
-          </div>
-          
-      </div>    
-
-
-      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
-        <img src="img/seta.svg"></img>
+      <div id='terms' className='absolute'>
+        <div id='termsCheck'>
+          <label className='container-checkbox'>
+            <span className='text-terms'>
+              Aceito compartilhar informações com o UNFPA e receber comunicados
+              via email
+            </span>
+            <input
+              id='inputCheckbox1'
+              type='checkbox'
+              checked={checkbox1Checked}
+              onChange={handleCheckbox1Change}
+            />
+            <span
+              className={`checkmark ${
+                !checkbox1Checked && erro ? 'check--error' : ''
+              }`}
+            ></span>
+          </label>
+        </div>
+      </div>
+      <div id='terms2' className='absolute'>
+        <div id='termsCheck'>
+          <label className='container-checkbox'>
+            <span className='text-terms'>
+              Estou ciente que meus dados não serão comercializados ou
+              compartilhados
+            </span>
+            <input
+              id='inputCheckbox2'
+              type='checkbox'
+              checked={checkbox2Checked}
+              onChange={handleCheckbox2Change}
+            />
+            <span className={`checkmark ${
+                !checkbox2Checked && erro ? 'check--error' : ''
+              }`}></span>
+          </label>
+        </div>
       </div>
 
+      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+        <img src='img/seta.svg'></img>
+      </div>
     </div>
   )
 }

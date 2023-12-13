@@ -88,7 +88,8 @@ function startServer () {
 
   // Rota para ver a a quantidade total
   app.get('/ranking', (req, res) => {
-    const sql = "SELECT tema, COUNT(*) as quantidade, ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json GROUP BY tema ORDER BY quantidade DESC LIMIT 5"
+    const sql =
+      "SELECT tema, COUNT(*) as quantidade, ROUND((COUNT(*) / (SELECT COUNT(tema) FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json)) * 100, 2) as porcentagem FROM jogador, JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json GROUP BY tema ORDER BY quantidade DESC LIMIT 5"
 
     // SELECT
     //     tema,
@@ -99,7 +100,7 @@ function startServer () {
     //     JSON_TABLE(temas, '$[*]' COLUMNS (tema VARCHAR(255) PATH '$')) AS temas_json
     // GROUP BY
     //     tema
-    // ORDER BY 
+    // ORDER BY
     //   quantidade DESC
     // LIMIT 5;
 
@@ -120,9 +121,9 @@ function startServer () {
 
     const insertSql =
       'INSERT INTO jogador (conhece, eixo, temas) VALUES (?,?,?)'
-      console.log(conhece)
-      console.log(eixo)
-      console.log(temas)
+    console.log(conhece)
+    console.log(eixo)
+    console.log(temas)
     const values = [conhece, eixo, temas]
 
     db.query(insertSql, values, (err, result) => {
@@ -142,6 +143,75 @@ function startServer () {
     const { comentario } = req.body // Recebe os valores do corpo da requisição
     const sql = 'UPDATE jogador SET outroTema = ? WHERE id = ?'
     const values = [comentario, id]
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Erro ao atualizar cadastro:', err)
+        res.status(500).json({ error: 'Erro ao atualizar cadastro' })
+        return
+      }
+
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: 'Cadastro não encontrado' })
+        return
+      }
+
+      res.json({ id })
+    })
+  })
+
+  // Rota para atualizar um cadastro
+  app.put('/nome/:id', (req, res) => {
+    const { id } = req.params // Supondo que o unidade do cadastro seja passado
+    const { nome } = req.body // Recebe os valores do corpo da requisição
+    const sql = 'UPDATE jogador SET nome = ? WHERE id = ?'
+    const values = [nome, id]
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Erro ao atualizar cadastro:', err)
+        res.status(500).json({ error: 'Erro ao atualizar cadastro' })
+        return
+      }
+
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: 'Cadastro não encontrado' })
+        return
+      }
+
+      res.json({ id })
+    })
+  })
+
+  // Rota para atualizar um cadastro
+  app.put('/dados/:id', (req, res) => {
+    const { id } = req.params
+    const { dataNascimento, genero, raca, estado } = req.body
+    const sql = 'UPDATE jogador SET dataNascimento = ?, genero = ?, raca = ?, estado = ? WHERE id = ?'
+    const values = [dataNascimento, genero, raca, estado, id]
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error('Erro ao atualizar cadastro:', err)
+        res.status(500).json({ error: 'Erro ao atualizar cadastro' })
+        return
+      }
+
+      if (result.affectedRows === 0) {
+        res.status(404).json({ error: 'Cadastro não encontrado' })
+        return
+      }
+
+      res.json({ id })
+    })
+  })
+
+  // Rota para atualizar um cadastro
+  app.put('/email/:id', (req, res) => {
+    const { id } = req.params
+    const { email } = req.body
+    const sql = 'UPDATE jogador SET email = ? WHERE id = ?'
+    const values = [email, id]
 
     db.query(sql, values, (err, result) => {
       if (err) {

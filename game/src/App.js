@@ -31,6 +31,7 @@ function App () {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
         <Route path='/conhece' element={<Conhece />}></Route>
         <Route path='/cipd' element={<CIPD />}></Route>
         <Route path='/pilares' element={<Pilares />}></Route>

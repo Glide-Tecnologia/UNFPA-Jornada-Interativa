@@ -49,6 +49,10 @@ input::placeholder {
   box-shadow: 0 0 50px 5px red;
 }
 
+.check--error {
+  box-shadow: 0 0 20px 5px red;
+}
+
 .cadastro__titulo {
   position: absolute;
   z-index: 2;

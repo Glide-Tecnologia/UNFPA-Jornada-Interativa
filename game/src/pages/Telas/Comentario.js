@@ -14,6 +14,8 @@ function Cadastro () {
   const keyboard = useRef()
   const [erro, setErro] = useState(false)
 
+  const [isHidden, setIsHidden] = useState(true)
+
   const navigate = useNavigate()
 
   const inputRef = useRef(null)
@@ -22,11 +24,18 @@ function Cadastro () {
     inputRef.current.focus()
 
     let delay = 100
-    animateElement(".icpd-30", "rotateIn", delay);
-    animateElement(".mensagem-comentario", "fadeInDown", delay+300);
-    animateElement(".inputs", "fadeIn", delay+600);   
-    animateElement(".keyboard", "fadeIn", delay+800);  
-    animateElement(".btn-salvar-comentario", "bounceIn", delay+1200);    
+    animateElement('.icpd-30', 'rotateIn', delay)
+    animateElement('.mensagem-comentario', 'fadeInDown', delay + 300)
+    animateElement('.inputs', 'fadeIn', delay + 600)
+    animateElement('.keyboard', 'fadeIn', delay + 800)
+    animateElement('.btn-salvar-comentario', 'bounceIn', delay + 1200)
+
+    // setTimeout(() => {
+    //   setIsHidden(true)
+    // }, 1)
+    setTimeout(() => {
+      setIsHidden(false)
+    }, delay + 600)
   }, [])
 
   useEffect(() => {
@@ -35,6 +44,14 @@ function Cadastro () {
     }, 1000)
     return () => clearTimeout(time)
   }, [erro])
+
+  useEffect(() => {
+    // Adiciona foco automático no inputComentario
+    console.log('Entrando')
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
 
   const salvar = async () => {
     console.log('Tentando Salvar')
@@ -115,7 +132,7 @@ function Cadastro () {
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
       <img src='img/elemento-44.png' className='elemento-5 absolute' />
-      <div className='inputs hidden'>
+      <div className={`cadastro ${isHidden ? 'hidden-2' : 'visible'}`}>
         <input
           ref={inputRef}
           id='inputComentario'
@@ -138,7 +155,10 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
+      <div
+        className='btn-salvar-comentario hidden'
+        onTouchStart={() => salvar()}
+      >
         <img src='img/seta.svg'></img>
       </div>
     </div>
