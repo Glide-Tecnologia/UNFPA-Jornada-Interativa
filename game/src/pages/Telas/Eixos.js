@@ -12,14 +12,21 @@ function Eixos () {
   }
 
   const selecionar = condicao => {
-    setEixo(condicao)
-    localStorage.setItem('eixo', condicao)
+    if (animationDoneRef.current) {
+      setEixo(condicao)
+      localStorage.setItem('eixo', condicao)
+    }
   }
 
   useEffect(() => {
     console.log(eixo)
   }, [eixo])
-  
+
+  let animationDone = false;
+  const animationDoneRef = useRef(animationDone); 
+  useEffect(() => {
+    animationDoneRef.current = animationDone;
+  }, [animationDone]);
 
   useEffect(() => {
     let delay = 100
@@ -30,7 +37,8 @@ function Eixos () {
     animateElement('.btn-espaco', 'fadeInDown', delay + 500 + 200)
     animateElement('.btn-governo', 'fadeInDown', delay + 500 + 300)
     animateElement('.btn-sustentabilidade', 'fadeInDown', delay + 500 + 400)
-    animateElement('.seta', 'bounceIn', delay + 1600)
+    // animateElement('.seta', 'bounceIn', delay + 1600)
+    setTimeout(()=>{animationDoneRef.current = true;}, delay+1600)
   }, [])
 
   const temaAtivo = tema => (tema == eixo ? 'active' : '')
@@ -42,7 +50,7 @@ function Eixos () {
       {eixo != "" && (
         <img
           src='img/seta.svg'
-          className='seta absolute hidden'
+          className='seta absolute'
           onTouchStart={() => salvar()}
           onClick={() => salvar()}
         />
@@ -52,7 +60,7 @@ function Eixos () {
       </div>
 
       <div
-        className={`btn-dignidade absolute hidden ${temaAtivo(
+        className={`btn-dignidade absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
           'Dignidade e Direitos Humanos'
         )}`}
         onTouchStart={() => selecionar('Dignidade e Direitos Humanos')}
@@ -61,7 +69,7 @@ function Eixos () {
         Dignidade e Direitos Humanos
       </div>
       <div
-        className={`btn-saude absolute hidden ${temaAtivo(
+        className={`btn-saude absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
           'Saúde'
         )}`}
         onTouchStart={() => selecionar('Saúde')}
@@ -70,7 +78,7 @@ function Eixos () {
         Saúde
       </div>
       <div
-        className={`btn-espaco absolute hidden ${temaAtivo(
+        className={`btn-espaco absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
           'Espaço e mobilidade'
         )}`}
         onTouchStart={() => selecionar('Espaço e mobilidade')}
@@ -79,7 +87,7 @@ function Eixos () {
         Espaço e mobilidade
       </div>
       <div
-        className={`btn-governo absolute hidden ${temaAtivo(
+        className={`btn-governo absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
           'Governos com responsabilidade'
         )}`}
         onTouchStart={() => selecionar('Governos com responsabilidade')}
@@ -88,7 +96,7 @@ function Eixos () {
         Governos com responsabilidade
       </div>
       <div
-        className={`btn-sustentabilidade absolute hidden ${temaAtivo(
+        className={`btn-sustentabilidade absolute ${!animationDoneRef.current ? 'hidden' : ''} ${temaAtivo(
           'Sustentabilidade'
         )}`}
         onTouchStart={() => selecionar('Sustentabilidade')}
