@@ -32,7 +32,7 @@ function Eixos () {
 
   return (
     <div>
-      <img src='img/icpd-30.png' className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
       <img src='img/elemento-3.png' className='elemento-3 absolute' />
       <img
         src='img/seta.svg'

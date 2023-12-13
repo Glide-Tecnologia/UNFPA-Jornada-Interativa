@@ -5,6 +5,7 @@ import axios from 'axios'
 import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
 import './Cadastro.css'
+import { animateElement } from '../animate'
 
 function Cadastro () {
   const [inputs, setInputs] = useState({})
@@ -19,6 +20,13 @@ function Cadastro () {
 
   useEffect(() => {
     inputRef.current.focus()
+
+    let delay = 100
+    animateElement(".icpd-30", "rotateIn", delay);
+    animateElement(".mensagem-comentario", "fadeInDown", delay+300);
+    animateElement(".inputs", "fadeIn", delay+600);   
+    animateElement(".keyboard", "fadeIn", delay+800);  
+    animateElement(".btn-salvar-comentario", "bounceIn", delay+1200);    
   }, [])
 
   useEffect(() => {
@@ -99,15 +107,15 @@ function Cadastro () {
 
   return (
     <div className='cadastro'>
-      <img src='img/icpd-30.png' className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
-      <div className='mensagem-comentario absolute'>
+      <div className='mensagem-comentario absolute hidden'>
         Algum outro que não foi mencionado?
       </div>
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
       <img src='img/elemento-44.png' className='elemento-5 absolute' />
-      <div className='inputs'>
+      <div className='inputs hidden'>
         <input
           ref={inputRef}
           id='inputComentario'
@@ -120,7 +128,7 @@ function Cadastro () {
           className={!inputs.comentario && erro ? 'input--error' : ''}
         />
       </div>
-      <div className='keyboard'>
+      <div className='keyboard hidden'>
         <Keyboard
           keyboardRef={r => (keyboard.current = r)}
           inputName={inputName}
@@ -130,7 +138,7 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
         <img src='img/seta.svg'></img>
       </div>
     </div>

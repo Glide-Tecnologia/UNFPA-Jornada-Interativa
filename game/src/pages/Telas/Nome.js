@@ -5,6 +5,7 @@ import axios from 'axios'
 import 'react-simple-keyboard/build/css/index.css'
 import './Telas.css'
 import './Cadastro.css'
+import { animateElement } from '../animate'
 
 function Cadastro () {
   const [inputs, setInputs] = useState({})
@@ -19,6 +20,14 @@ function Cadastro () {
 
   useEffect(() => {
     inputRef.current.focus()
+
+    let delay = 100
+    animateElement(".icpd-30", "rotateIn", delay);
+    animateElement(".titulo-nome", "fadeInDown", delay+300);
+    animateElement(".label-input", "fadeIn", delay+500);  
+    animateElement(".inputs", "fadeIn", delay+600); 
+    animateElement(".keyboard", "fadeIn", delay+800);  
+    animateElement(".btn-salvar-comentario", "bounceIn", delay+1200);   
   }, [])
 
   useEffect(() => {
@@ -123,13 +132,13 @@ function Cadastro () {
 
   return (
     <div className='nome'>
-      <img src='img/icpd-30.png' className='icpd-30 absolute' />
+      <img src='img/icpd-30.png' className='icpd-30 absolute hidden' />
 
-      <div className='titulo-nome absolute'>Estamos quase acabando!</div>
+      <div className='titulo-nome absolute hidden'>Estamos quase acabando!</div>
 
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
-      <div className='label-input absolute'>Nome completo:</div>
-      <div className='inputs'>
+      <div className='label-input absolute hidden'>Nome completo:</div>
+      <div className='inputs hidden'>
         <input
           ref={inputRef}
           id='inputNome'
@@ -142,7 +151,7 @@ function Cadastro () {
           className={!inputs.nome && erro ? 'input--error' : ''}
         />
       </div>
-      <div className='keyboard'>
+      <div className='keyboard hidden'>
         <Keyboard
           keyboardRef={r => (keyboard.current = r)}
           inputName={inputName}
@@ -152,7 +161,7 @@ function Cadastro () {
           layout={customLayout}
         />
       </div>
-      <div className='btn-salvar-comentario' onTouchStart={() => salvar()}>
+      <div className='btn-salvar-comentario hidden' onTouchStart={() => salvar()}>
         <img src='img/seta.svg'></img>
       </div>
     </div>

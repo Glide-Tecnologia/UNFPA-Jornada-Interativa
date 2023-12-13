@@ -11,29 +11,28 @@ function Vida () {
 
   return (
     <div>
-      <img src='img/elemento-3.png' className='elemento-3 absolute' />
-      <img src='img/elemento-5.png' className='elemento-5 absolute' />
-      <img
-        src='img/seta.svg'
-        className='seta absolute'
-        onTouchStart={() => redireconar()}
-        onClick={() => redireconar()}
-      />
-      <img src='img/Coração.png' className='icone-pilares icone-coracao absolute' />
-      <div className='titulo-pilares-itens absolute'>
-        <h2>MINHA VIDA</h2>
+      <img src='img/elemento-1.png' className='elemento-5 absolute' />
+      <img src='img/elemento-2.png' className='elemento-3 absolute' />
+
+      <img src="img/logo-1.png" className='logo-final absolute'/>
+
+      <div className='titulo-final absolute'>
+        Siga o UNFPA Brasil nas redes sociais!
       </div>
-      <div className='texto-pilares-itens texto-vida absolute'>
-        <p>
-          Que a juventude possa ter uma vida saudável e com acesso à educação em
-          sexualidade, com igualdade de gênero e com o pleno empoderamento de
-          mulheres e meninas.{' '}
-        </p>
-        <p>
-          Para isso, também é fundamental que os homens estejam envolvidos e
-          engajados nesse tema!
-        </p>
+     
+      <div className='instagram absolute'>
+      @UNFPABrasil
       </div>
+
+      <div className='redes-sociais absolute'>
+        <img src='img/icones/1.svg' />
+        <img src='img/icones/2.svg' />
+        <img src='img/icones/3.svg' />
+        <img src='img/icones/4.svg' />
+      </div>
+
+      <img src="img/slogan.png" className='slogan-final absolute'/>
+
     </div>
   )
 }

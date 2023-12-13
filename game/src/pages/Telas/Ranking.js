@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Telas.css'
+import { animateElement } from '../animate'
 
 function Ranking () {
   const navigate = useNavigate()
@@ -13,6 +14,11 @@ function Ranking () {
 
   useEffect(() => {
     consultarInfo()
+    let delay = 100
+    animateElement(".titulo-ranking", "fadeIn", delay);
+    animateElement(".texto-ranking", "fadeInDown", delay+300);
+    animateElement(".ranking__item", "fadeInLeft", delay+600, {selectAll: true, delayItems: 100});
+    animateElement(".seta", "bounceIn", delay+1400);
   }, [])
 
   const consultarInfo = async () => {
@@ -24,7 +30,7 @@ function Ranking () {
       const temasTopFive = response.data.slice(0, 5)
 
       dados = temasTopFive.map((tema, index) => (
-        <div key={index} className='ranking__item'>
+        <div key={index} className='ranking__item hidden'>
           <div className='ranking__nome' style={{ maxWidth: '67%' }}>
             {tema.tema}
           </div>
@@ -43,15 +49,15 @@ function Ranking () {
   return (
     <div>
       <img src='img/elemento-6.png' className='elemento-6 absolute' />
-      <div className='titulo-ranking absolute'>
+      <div className='titulo-ranking absolute hidden'>
         <h1>Ranking</h1>
       </div>
-      <div className='texto-ranking absolute'>
+      <div className='texto-ranking absolute hidden'>
         <p>Temas mais votados</p>
       </div>
       <img
         src='img/seta.svg'
-        className='seta absolute'
+        className='seta absolute hidden'
         onTouchStart={() => redireconar()}
         onClick={() => redireconar()}
       />
